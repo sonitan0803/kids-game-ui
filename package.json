@@ -1,0 +1,50 @@
+{
+    "name": "kids-game-ui",
+    "version": "0.0.1",
+    "private": true,
+    "packageManager": "pnpm@9.15.0",
+    "scripts": {
+        "build": "turbo run build --filter=./packages/**",
+        "test": "vitest",
+        "test:watch": "vitest --watch",
+        "storybook": "storybook dev -p 6006 -c .storybook",
+        "clean": "pnpm -r --parallel exec rimraf dist .turbo *.log node_modules",
+        "clean:all": "pnpm clean && pnpm rimraf .turbo *.log .eslintcache coverage storybook-static trace node_modules"
+    },
+    "dependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@koralle/vitest-axe": "^0.1.1",
+        "@storybook/addon-essentials": "^8.6.12",
+        "@storybook/cli": "8.6.12",
+        "@storybook/core-common": "8.6.12",
+        "@storybook/react": "^8.6.12",
+        "@storybook/react-vite": "^8.6.12",
+        "@testing-library/jest-dom": "^6.6.3",
+        "@testing-library/react": "^16.3.0",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.14.1",
+        "@types/react": "^19.1.2",
+        "@types/testing-library__react": "^10.2.0",
+        "@vitejs/plugin-react-swc": "^3.9.0",
+        "clean-package": "^2.2.0",
+        "jsdom": "^26.1.0",
+        "rimraf": "^6.0.1",
+        "storybook": "^8.5.8",
+        "tsup": "^8.4.0",
+        "turbo": "^2.5.0",
+        "typescript": "^5.8.3",
+        "vitest": "^3.1.1"
+    },
+    "peerDependencies": {
+        "react": ">=18"
+    },
+    "pnpm": {
+        "overrides": {
+            "react": "^18.2.0",
+            "react-dom": "^18.2.0"
+        }
+    }
+}

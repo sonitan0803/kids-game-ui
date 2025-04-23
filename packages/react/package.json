@@ -1,0 +1,47 @@
+{
+    "name": "@kids-game-ui/react",
+    "version": "0.0.1",
+    "main": "src/index.ts",
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "dev": "pnpm build:fast -- --watch",
+        "build": "tsup src --dts",
+        "build:fast": "tsup src",
+        "clean": "rimraf dist .turbo",
+        "prepack": "clean-package",
+        "postpack": "clean-package restore"
+    },
+    "dependencies": {
+        "@kids-game-ui/components-button": "workspace:*",
+        "@kids-game-ui/opening": "workspace:*"
+    },
+    "devDependencies": {
+        "clean-package": "2.2.0",
+        "react": "^18.3.1"
+    },
+    "peerDependencies": {
+        "@emotion/react": ">=11",
+        "@emotion/styled": ">=11",
+        "motion": ">=11",
+        "react": ">=18",
+        "react-dom": ">=18",
+        "@kids-game-ui/components-button": ">0.0.1",
+        "@kids-game-ui/opening": ">0.0.1"
+    },
+    "clean-package": "../../clean-package.config.json",
+    "tsup": {
+        "clean": true,
+        "target": "es2019",
+        "format": [
+            "cjs",
+            "esm"
+        ],
+        "sourcemap": true
+    }
+}
