@@ -17,6 +17,8 @@
     },
     "devDependencies": {
         "@koralle/vitest-axe": "^0.1.1",
+        "@storybook/addon-actions": "^8.6.12",
+        "@storybook/addon-docs": "^8.6.12",
         "@storybook/addon-essentials": "^8.6.12",
         "@storybook/cli": "8.6.12",
         "@storybook/core-common": "8.6.12",
@@ -35,6 +37,7 @@
         "storybook": "^8.5.8",
         "tsup": "^8.4.0",
         "turbo": "^2.5.0",
+        "typed-css-modules": "^0.9.1",
         "typescript": "^5.8.3",
         "vitest": "^3.1.1"
     },
