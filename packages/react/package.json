@@ -30,9 +30,7 @@
         "@emotion/styled": ">=11",
         "motion": ">=11",
         "react": ">=18",
-        "react-dom": ">=18",
-        "@kids-game-ui/components-button": ">0.0.1",
-        "@kids-game-ui/opening": ">0.0.1"
+        "react-dom": ">=18"
     },
     "clean-package": "../../clean-package.config.json",
     "tsup": {
