@@ -30,6 +30,7 @@
         "@types/node": "^22.14.1",
         "@types/react": "^19.1.2",
         "@types/testing-library__react": "^10.2.0",
+        "@vanilla-extract/vite-plugin": "^5.0.1",
         "@vitejs/plugin-react-swc": "^3.9.0",
         "clean-package": "^2.2.0",
         "jsdom": "^26.1.0",
@@ -39,6 +40,7 @@
         "turbo": "^2.5.0",
         "typed-css-modules": "^0.9.1",
         "typescript": "^5.8.3",
+        "vite": "^6.3.3",
         "vitest": "^3.1.1"
     },
     "peerDependencies": {

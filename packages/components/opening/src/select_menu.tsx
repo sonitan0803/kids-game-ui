@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import styles from "./select_menu.module.css";
+import * as styles from "./select_menu.css"; // ← こっちを参照
 
 /**
  * SelectMenu コンポーネントは、はじめる／つづきから／オプション の3つの縦並びボタンを表示するメニューです。
@@ -56,7 +56,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
 
     return (
         <div
-            className={styles.select_menu_container}
+            className={styles.container}
             style={
                 {
                     "--menu-height": props.height,
@@ -65,7 +65,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
             }
         >
             <button
-                className={styles.menu_button}
+                className={styles.menuButton}
                 onClick={props.handleClickStart}
                 onMouseEnter={() => selectOnly("isStart")}
                 onMouseLeave={() => resetSelect()}
@@ -73,7 +73,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
                 はじめる {isSelectMenu.isStart && "←"}
             </button>
             <button
-                className={styles.menu_button}
+                className={styles.menuButton}
                 onClick={props.handleClickContinue}
                 onMouseEnter={() => selectOnly("isContinue")}
                 onMouseLeave={() => resetSelect()}
@@ -81,7 +81,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
                 つづきから {isSelectMenu.isContinue && "←"}
             </button>
             <button
-                className={styles.menu_button}
+                className={styles.menuButton}
                 onClick={props.handleClickOption}
                 onMouseEnter={() => selectOnly("isOption")}
                 onMouseLeave={() => resetSelect()}
