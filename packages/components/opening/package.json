@@ -1,10 +1,13 @@
 {
     "name": "@kids-game-ui/opening",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "main": "src/index.ts",
     "files": [
         "dist"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "clean-package": "../../../clean-package.config.json",
     "scripts": {
         "build": "tsup src --dts",

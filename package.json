@@ -1,7 +1,6 @@
 {
     "name": "kids-game-ui",
-    "version": "0.0.1",
-    "private": true,
+    "version": "0.1.0",
     "packageManager": "pnpm@9.15.0",
     "scripts": {
         "build": "turbo run build --filter=./packages/**",
