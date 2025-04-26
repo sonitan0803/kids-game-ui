@@ -1,6 +1,17 @@
+/** @jsxImportSource @emotion/react */ // この行を追加
 import React, { useState } from "react";
 
-import * as styles from "./select_menu.css"; // ← こっちを参照
+import { css } from "@emotion/react";
+
+// コンポーネントスタイルの定義
+const buttonStyle = css`
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+`;
 
 /**
  * SelectMenu コンポーネントは、はじめる／つづきから／オプション の3つの縦並びボタンを表示するメニューです。
@@ -56,16 +67,18 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
 
     return (
         <div
-            className={styles.container}
+            // className={styles.container}
             style={
                 {
                     "--menu-height": props.height,
                     "--menu-width": props.width,
+                    backgroundColor: "red",
                 } as React.CSSProperties
             }
         >
             <button
-                className={styles.menuButton}
+                css={buttonStyle}
+                style={{ width: "100%", backgroundColor: "blue" }}
                 onClick={props.handleClickStart}
                 onMouseEnter={() => selectOnly("isStart")}
                 onMouseLeave={() => resetSelect()}
@@ -73,7 +86,8 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
                 はじめる {isSelectMenu.isStart && "←"}
             </button>
             <button
-                className={styles.menuButton}
+                css={buttonStyle}
+                // className={styles.menuButton}
                 onClick={props.handleClickContinue}
                 onMouseEnter={() => selectOnly("isContinue")}
                 onMouseLeave={() => resetSelect()}
@@ -81,7 +95,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = (
                 つづきから {isSelectMenu.isContinue && "←"}
             </button>
             <button
-                className={styles.menuButton}
+                css={buttonStyle}
                 onClick={props.handleClickOption}
                 onMouseEnter={() => selectOnly("isOption")}
                 onMouseLeave={() => resetSelect()}
