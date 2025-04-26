@@ -1,6 +1,6 @@
 {
     "name": "@kids-game-ui/react",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "main": "src/index.ts",
     "files": [
         "dist"
@@ -18,8 +18,8 @@
         "postpack": "clean-package restore"
     },
     "dependencies": {
-        "@kids-game-ui/components-button": "workspace:*",
-        "@kids-game-ui/opening": "workspace:*"
+        "@kids-game-ui/components-button": "0.1.0",
+        "@kids-game-ui/opening": "0.1.0"
     },
     "devDependencies": {
         "clean-package": "2.2.0",
