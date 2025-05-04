@@ -35,3 +35,39 @@ export const SizeConfirm: Story = {
         handleClickOption: handleClickOption,
     },
 };
+
+/**
+ * 文字サイス
+ */
+export const FontSize: Story = {
+    args: {
+        fontSize: "20px",
+        handleClickStart: handleClickStart,
+        handleClickContinue: handleClickContinue,
+        handleClickOption: handleClickOption,
+    },
+};
+
+/**
+ * 文字色の確認
+ */
+export const FontColor: Story = {
+    args: {
+        fontColor: "red",
+        handleClickStart: handleClickStart,
+        handleClickContinue: handleClickContinue,
+        handleClickOption: handleClickOption,
+    },
+};
+
+/**
+ * 背景色の確認
+ */
+export const ButtonColor: Story = {
+    args: {
+        buttonColor: "rgba(124, 255, 84, 0.918)",
+        handleClickStart: handleClickStart,
+        handleClickContinue: handleClickContinue,
+        handleClickOption: handleClickOption,
+    },
+};

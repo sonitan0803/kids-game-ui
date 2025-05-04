@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { css } from "@emotion/react";
 
 const containerStyle = css`
@@ -7,7 +6,7 @@ const containerStyle = css`
     flex-direction: column;
     align-items: center;
     border: 2px solid #000000;
-    background-color: #ffffff
+    background-color: #ffffff;
     width: var(--menu-width);
     height: var(--menu-height);
 `;
@@ -15,7 +14,10 @@ const containerStyle = css`
 const buttonStyle = css`
     width: 100%;
     flex: 1;
-    background: transparent;
+    background: var(--button-color);
+    color: var(--font-color);
+    font-family: inherit;
+    font-size: var(--font-size);
     border: 2px solid transparent;
     transition:
         transform 0.2s ease,
@@ -44,6 +46,12 @@ export type SelectMenuProps = {
     height?: string;
     /** コンポーネント全体の幅（例: `"200px"`） */
     width?: string;
+    /** ボタンの背景色 */
+    buttonColor?: string;
+    /** 文字の色 */
+    fontColor?: string;
+    /** 文字のサイズ */
+    fontSize?: string;
     /** 「はじめる」ボタンのクリック時に呼ばれるコールバック関数 */
     handleClickStart: () => void;
     /** 「つづきから」ボタンのクリック時に呼ばれるコールバック関数 */
@@ -52,73 +60,62 @@ export type SelectMenuProps = {
     handleClickOption: () => void;
 };
 
-interface SelectMenuFlag {
-    isStart: boolean;
-    isContinue: boolean;
-    isOption: boolean;
-}
+type MenuKey = "isStart" | "isContinue" | "isOption";
 
-export const SelectMenu: React.FC<SelectMenuProps> = (
-    props: SelectMenuProps
-) => {
-    const [isSelectMenu, setSelectMenu] = useState<SelectMenuFlag>({
-        isStart: false,
-        isOption: false,
-        isContinue: false,
-    });
+export const SelectMenu: React.FC<SelectMenuProps> = ({
+    height = "150px",
+    width = "150px",
+    buttonColor = "transparent",
+    fontColor = "black",
+    fontSize = "16px",
+    handleClickStart,
+    handleClickContinue,
+    handleClickOption,
+}) => {
+    const [selected, setSelected] = useState<MenuKey | null>(null);
 
-    const selectOnly = (key: keyof SelectMenuFlag) => {
-        setSelectMenu({
-            isStart: false,
-            isContinue: false,
-            isOption: false,
-            [key]: true,
-        });
-    };
-
-    const resetSelect = () => {
-        setSelectMenu({
-            isStart: false,
-            isContinue: false,
-            isOption: false,
-        });
-    };
+    const buttonList: {
+        label: string;
+        key: MenuKey;
+        onClick: () => void;
+    }[] = [
+        { label: "はじめる", key: "isStart", onClick: handleClickStart },
+        {
+            label: "つづきから",
+            key: "isContinue",
+            onClick: handleClickContinue,
+        },
+        { label: "オプション", key: "isOption", onClick: handleClickOption },
+    ];
 
     return (
         <div
             css={containerStyle}
             style={
                 {
-                    "--menu-height": props.height,
-                    "--menu-width": props.width,
+                    "--menu-height": height,
+                    "--menu-width": width,
                 } as React.CSSProperties
             }
         >
-            <button
-                css={buttonStyle}
-                onClick={props.handleClickStart}
-                onMouseEnter={() => selectOnly("isStart")}
-                onMouseLeave={() => resetSelect()}
-            >
-                はじめる {isSelectMenu.isStart && "←"}
-            </button>
-            <button
-                css={buttonStyle}
-                // className={styles.menuButton}
-                onClick={props.handleClickContinue}
-                onMouseEnter={() => selectOnly("isContinue")}
-                onMouseLeave={() => resetSelect()}
-            >
-                つづきから {isSelectMenu.isContinue && "←"}
-            </button>
-            <button
-                css={buttonStyle}
-                onClick={props.handleClickOption}
-                onMouseEnter={() => selectOnly("isOption")}
-                onMouseLeave={() => resetSelect()}
-            >
-                オプション {isSelectMenu.isOption && "←"}
-            </button>
+            {buttonList.map(({ label, key, onClick }) => (
+                <button
+                    key={key}
+                    css={buttonStyle}
+                    style={
+                        {
+                            "--button-color": buttonColor,
+                            "--font-color": fontColor,
+                            "--font-size": fontSize,
+                        } as React.CSSProperties
+                    }
+                    onClick={onClick}
+                    onMouseEnter={() => setSelected(key)}
+                    onMouseLeave={() => setSelected(null)}
+                >
+                    {label} {selected === key && "←"}
+                </button>
+            ))}
         </div>
     );
 };
