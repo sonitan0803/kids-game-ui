@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     viteFinal: async (config, { configType }) => {
         return mergeConfig(config, {
             css: {
-                modules: false, // 🔥 CSS Modules 無効化
+                modules: false,
             },
         });
     },

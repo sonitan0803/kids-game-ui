@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */ // この行を追加
 import React, { useState } from "react";
 
 import { css } from "@emotion/react";
@@ -8,6 +7,7 @@ const containerStyle = css`
     flex-direction: column;
     align-items: center;
     border: 2px solid #000000;
+    background-color: #ffffff
     width: var(--menu-width);
     height: var(--menu-height);
 `;
