@@ -7,7 +7,6 @@ const containerStyle = css`
     flex-direction: column;
     height: var(--container-height);
     width: var(--container-width);
-    max-width: 1024px;
     margin: 0 0 0 0;
     background-color: rgba(73, 73, 73, 0.4);
     box-sizing: border-box;
