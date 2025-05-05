@@ -8,7 +8,7 @@ const containerStyle = css`
     height: var(--container-height);
     width: var(--container-width);
     max-width: 1024px;
-    margin: 0 auto;
+    margin: 0 0 0 0;
     background-color: rgba(73, 73, 73, 0.4);
     box-sizing: border-box;
     border: 4px ridge rgba(255, 255, 255, 1);
@@ -42,7 +42,7 @@ const dialogueArea = css`
 // キャラクター名のスタイル
 const nameText = css`
     color: white;
-    font-size: 15.5px; /* 基準は16pxとして 1.1rem は約17.6px */
+    font-size: var(--character-name-font-size);
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 黒い縁 */
 `;
@@ -51,7 +51,7 @@ const nameText = css`
 const dialogueText = css`
     margin-left: 1%;
     color: white;
-    font-size: 14px; /* 基準は16px */
+    font-size: var(--character-line-font-size); /* 基準は16px */
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 黒い縁 */
     line-height: 140%;
@@ -78,7 +78,7 @@ const blinkingArrow = css`
 `;
 
 // キャラクター画像のスタイル
-const characterImage = css`
+const characterImageStyle = css`
     height: 80%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -93,11 +93,7 @@ const arrowButton = css`
     background: transparent;
     border: 2px solid transparent;
     color: white;
-    font-size: 1rem; /* 基準サイズ */
-
-    @media (min-width: 768px) {
-        font-size: 1.25rem; /* より大きなボタンサイズ */
-    }
+    font-size: var(--button-font-size); /* 基準サイズ */
 `;
 
 interface CharacterLineProps {
@@ -115,14 +111,27 @@ interface CharacterLineProps {
     width?: string;
     /** メッセージの表示 */
     isEnd: boolean;
+    /** キャラクター名のフォントサイズ */
+    characterNameText?: string;
+    /** セリフのフォントサイズ */
+    characterLineText?: string;
+    /**　次のボタンのサイズ */
+    buttonSize?: string;
 }
 
-export const CharacterLine: React.FC<CharacterLineProps> = (
-    props: CharacterLineProps
-) => {
-    const containerHeight = props.height ?? "100px";
-    const containerWidth = props.width ?? "100%";
-    if (props.isEnd) {
+export const CharacterLine: React.FC<CharacterLineProps> = ({
+    children,
+    characterName,
+    characterImage,
+    handleMessageClick,
+    height = "100px",
+    width = "100%",
+    isEnd,
+    characterNameText = "15.5px",
+    characterLineText = "14px",
+    buttonSize = "16px",
+}) => {
+    if (isEnd) {
         return;
     }
 
@@ -131,8 +140,8 @@ export const CharacterLine: React.FC<CharacterLineProps> = (
             css={containerStyle}
             style={
                 {
-                    "--container-height": containerHeight,
-                    "--container-width": containerWidth,
+                    "--container-height": height,
+                    "--container-width": width,
                 } as React.CSSProperties
             }
         >
@@ -143,20 +152,48 @@ export const CharacterLine: React.FC<CharacterLineProps> = (
                     display: "flex",
                 }}
             >
-                {props.characterImage && (
+                {characterImage && (
                     <div css={imageWrapper}>
-                        <img css={characterImage} src={props.characterImage} />
+                        <img css={characterImageStyle} src={characterImage} />
                     </div>
                 )}
                 <div css={textWrapper}>
                     <div css={dialogueArea}>
-                        <div css={nameText}>{props.characterName}</div>
-                        <div css={dialogueText}>{props.children}</div>
+                        <div
+                            css={nameText}
+                            style={
+                                {
+                                    "--character-name-font-size":
+                                        characterNameText,
+                                } as React.CSSProperties
+                            }
+                        >
+                            {characterName}
+                        </div>
+                        <div
+                            css={dialogueText}
+                            style={
+                                {
+                                    "--character-line-font-size":
+                                        characterLineText,
+                                } as React.CSSProperties
+                            }
+                        >
+                            {children}
+                        </div>
                     </div>
                 </div>
             </div>
             <div css={[footer, blinkingArrow]}>
-                <button onClick={props.handleMessageClick} css={arrowButton}>
+                <button
+                    onClick={handleMessageClick}
+                    css={arrowButton}
+                    style={
+                        {
+                            "--button-font-size": buttonSize,
+                        } as React.CSSProperties
+                    }
+                >
                     ▼
                 </button>
             </div>

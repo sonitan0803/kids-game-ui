@@ -87,3 +87,45 @@ export const TextOverImageEnable: Story = {
         handleMessageClick: handleMessageClick,
     },
 };
+
+export const TextSize: Story = {
+    args: {
+        characterName: "神山",
+        children: `背景オフクロ様\nこれはテストです。`,
+        handleMessageClick: handleMessageClick,
+        characterNameText: "21px",
+        characterLineText: "20px",
+    },
+};
+
+export const TextSizeImageEnable: Story = {
+    args: {
+        characterName: "神山",
+        children: `背景オフクロ様\nこれはテストです。`,
+        characterImage:
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
+        handleMessageClick: handleMessageClick,
+        characterNameText: "21px",
+        characterLineText: "20px",
+    },
+};
+
+export const ButtonSize: Story = {
+    args: {
+        characterName: "神山",
+        children: `背景オフクロ様\nこれはテストです。`,
+        handleMessageClick: handleMessageClick,
+        buttonSize: "30px",
+    },
+};
+
+export const ButtonSizeImageEnable: Story = {
+    args: {
+        characterName: "神山",
+        children: `背景オフクロ様\nこれはテストです。`,
+        characterImage:
+            "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
+        handleMessageClick: handleMessageClick,
+        buttonSize: "30px",
+    },
+};
