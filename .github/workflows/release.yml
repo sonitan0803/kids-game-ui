@@ -39,4 +39,4 @@ jobs:
               run: pnpm changeset publish
 
             - name: Publish packages
-              run: pnpm publish --access public
+              run: pnpm publish --access public --no-git-checks # git-checks を無効化
