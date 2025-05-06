@@ -13,10 +13,10 @@ jobs:
             - name: Checkout repository
               uses: actions/checkout@v3
 
-            - name: Set up Node.js
+            - name: Set up Node.js (Latest version)
               uses: actions/setup-node@v3
               with:
-                  node-version: "16" # 使用している Node.js バージョンに合わせてください
+                  node-version: "20" # Node.js 20.x.x 以上を指定
 
             - name: Use latest npm
               run: npm install -g npm
