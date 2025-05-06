@@ -1,6 +1,6 @@
 {
     "name": "@kids-game-ui/opening",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "main": "src/index.ts",
     "files": [
         "dist"

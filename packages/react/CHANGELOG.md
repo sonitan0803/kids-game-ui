@@ -1,5 +1,14 @@
 # @kids-game-ui/react
 
+## 0.2.7
+
+### Patch Changes
+
+- [`5eac1a2`](https://github.com/sonitan0803/kids-game-ui/commit/5eac1a2fa29e9f15d7fe59d208f317d6b8216ec2) Thanks [@sonitan0803](https://github.com/sonitan0803)! - update package
+
+- Updated dependencies [[`5eac1a2`](https://github.com/sonitan0803/kids-game-ui/commit/5eac1a2fa29e9f15d7fe59d208f317d6b8216ec2)]:
+  - @kids-game-ui/opening@0.3.3
+
 ## 0.2.6
 
 ### Patch Changes
