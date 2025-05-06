@@ -3,47 +3,50 @@ name: Release
 on:
     push:
         tags:
-            - "v*" # v1.0.0 などのタグ付きコミットでトリガー
+            - "v*" # タグが付けられたときのみトリガー
 
 jobs:
     release:
         runs-on: ubuntu-latest
-
         steps:
-            - name: Checkout repository
+            - name: Checkout code
               uses: actions/checkout@v3
 
-            - name: Set up Node.js (Latest version)
+            - name: Set up Node.js
               uses: actions/setup-node@v3
               with:
-                  node-version: "20" # Node.js のバージョン
+                  node-version: "16"
 
-            - name: Use latest npm
-              run: npm install -g npm
-
-            - name: Set up pnpm
-              run: npm install -g pnpm
-
-            - name: Set up .npmrc with token
-              run: |
-                  echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-                  echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
-
-            - name: Check npm token
-              run: npm whoami # トークンが正しいか確認
+            - name: Cache pnpm modules
+              uses: actions/cache@v2
+              with:
+                  path: ~/.pnpm-store
+                  key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-pnpm-
 
             - name: Install dependencies
               run: pnpm install
 
-            - name: Run changeset publish
-              run: pnpm changeset publish
+            - name: Generate changeset
+              run: pnpm changeset
 
-            # 各パッケージを公開するステップ
-            - name: Publish @kids-game-ui/react package
-              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/react"
+            - name: Version packages
+              run: pnpm changeset version
 
-            - name: Publish @kids-game-ui/components package
-              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/components"
+            - name: Publish packages
+              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/*"
 
-            - name: Publish @kids-game-ui/hooks package
-              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/hooks"
+            - name: Push changes
+              run: git push origin HEAD
+
+            - name: Create GitHub release
+              uses: actions/create-release@v1
+              with:
+                  tag_name: ${{ github.ref }} # タグ名をそのまま使用
+                  release_name: Release ${{ github.ref }}
+                  body: |
+                      Changes made in this release:
+                      ${{ steps.changeset.outputs.changeset_list }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
