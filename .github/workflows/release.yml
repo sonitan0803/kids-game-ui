@@ -3,7 +3,7 @@ name: Release
 on:
     push:
         tags:
-            - "v*" # タグが付けられたときのみトリガー
+            - "v*"
 
 jobs:
     release:
@@ -15,10 +15,10 @@ jobs:
             - name: Set up Node.js (latest)
               uses: actions/setup-node@v3
               with:
-                  node-version: "latest" # 最新のNode.jsバージョンを使用
+                  node-version: "latest"
 
             - name: Install pnpm
-              run: npm install -g pnpm # pnpm をインストール
+              run: npm install -g pnpm
 
             - name: Cache pnpm modules
               uses: actions/cache@v3
@@ -37,6 +37,15 @@ jobs:
             - name: Version packages
               run: pnpm changeset version
 
+            - name: Log in to npm
+              run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+            - name: Verify npm authentication
+              run: |
+                  npm whoami
+                  # もし認証に失敗した場合にエラーを出す
+              continue-on-error: false # 認証に失敗したらエラーで終了
+
             - name: Publish packages
               run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/*"
 
@@ -46,7 +55,7 @@ jobs:
             - name: Create GitHub release
               uses: actions/create-release@v1
               with:
-                  tag_name: ${{ github.ref }} # タグ名をそのまま使用
+                  tag_name: ${{ github.ref }}
                   release_name: Release ${{ github.ref }}
                   body: |
                       Changes made in this release:
