@@ -3,7 +3,7 @@ name: Release
 on:
     push:
         tags:
-            - "v*" # タグ付きコミットでリリース
+            - "v*" # v1.0.0 などのタグ付きコミットでトリガー
 
 jobs:
     release:
@@ -16,7 +16,7 @@ jobs:
             - name: Set up Node.js (Latest version)
               uses: actions/setup-node@v3
               with:
-                  node-version: "20" # Node.js 20.x.x 以上を指定
+                  node-version: "20" # Node.js のバージョン
 
             - name: Use latest npm
               run: npm install -g npm
@@ -30,7 +30,7 @@ jobs:
                   echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
 
             - name: Check npm token
-              run: npm whoami # トークンの検証
+              run: npm whoami # トークンが正しいか確認
 
             - name: Install dependencies
               run: pnpm install
@@ -38,5 +38,12 @@ jobs:
             - name: Run changeset publish
               run: pnpm changeset publish
 
-            - name: Publish packages
-              run: pnpm publish --access public --no-git-checks # git-checks を無効化
+            # 各パッケージを公開するステップ
+            - name: Publish @kids-game-ui/react package
+              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/react"
+
+            - name: Publish @kids-game-ui/components package
+              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/components"
+
+            - name: Publish @kids-game-ui/hooks package
+              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/hooks"
