@@ -32,7 +32,7 @@ type OpeningTitleProps = {
     width?: string;
     /** 文字サイズ */
     fontSize?: string;
-    /**文字色 */
+    /** 文字色 */
     fontColor?: string;
     /** 枠の色*/
     borderColor?: string;
