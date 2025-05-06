@@ -20,6 +20,7 @@
     "devDependencies": {
         "@changesets/changelog-github": "^0.5.1",
         "@changesets/cli": "^2.29.3",
+        "@changesets/get-release-plan": "^4.0.11",
         "@koralle/vitest-axe": "^0.1.1",
         "@storybook/addon-actions": "^8.6.12",
         "@storybook/addon-docs": "^8.6.12",

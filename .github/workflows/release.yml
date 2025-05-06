@@ -38,11 +38,6 @@ jobs:
             - name: Install dependencies
               run: pnpm install
 
-            - name: Version packages
-              run: pnpm changeset version
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
             - name: Build packages
               run: pnpm run build
 
@@ -53,34 +48,26 @@ jobs:
               run: npm whoami
               continue-on-error: false
 
-            - name: Publish packages
-              run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/*"
+            - name: Publish packages via Changesets
+              run: pnpm changeset publish
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-            - name: Commit version bumps and remove changesets
+            - name: Push version commit and tags
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git rm .changeset/*.md || true
-                  git add .
-                  git commit -m "chore(release): apply version changes and clean changesets" || echo "No changes to commit"
+                  git push origin HEAD:main --follow-tags
 
-            - name: Push changes to main
-              run: git push origin HEAD:main
-
-            - name: Extract latest changelog entry
-              id: changelog
-              run: |
-                  PACKAGE_DIR="packages/react" # 必要に応じて変更
-                  changelog=$(awk '/^## /{i++}i==2{exit}i==1' $PACKAGE_DIR/CHANGELOG.md)
-                  echo "changelog<<EOF" >> $GITHUB_OUTPUT
-                  echo "$changelog" >> $GITHUB_OUTPUT
-                  echo "EOF" >> $GITHUB_OUTPUT
+            - name: Generate release notes
+              run: node scripts/get-changelog.js
 
             - name: Create GitHub release
               uses: actions/create-release@v1
               with:
                   tag_name: ${{ github.ref }}
                   release_name: Release ${{ github.ref }}
-                  body: ${{ steps.changelog.outputs.changelog }}
+                  body_path: release-notes.txt
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
