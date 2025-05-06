@@ -1,5 +1,11 @@
 # @kids-game-ui/react
 
+## 0.2.12
+
+### Patch Changes
+
+- [`1cacd91`](https://github.com/sonitan0803/kids-game-ui/commit/1cacd9182170340c1ffc42799a518607129b9567) Thanks [@sonitan0803](https://github.com/sonitan0803)! - update
+
 ## 0.2.11
 
 ### Patch Changes
