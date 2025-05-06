@@ -9,6 +9,7 @@
     "publishConfig": {
         "access": "public"
     },
+    "private": false,
     "scripts": {
         "dev": "pnpm build:fast -- --watch",
         "build": "tsup src --dts",

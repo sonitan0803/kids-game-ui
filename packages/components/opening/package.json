@@ -8,6 +8,7 @@
     "publishConfig": {
         "access": "public"
     },
+    "private": false,
     "clean-package": "../../../clean-package.config.json",
     "scripts": {
         "build": "tsup src --dts",
