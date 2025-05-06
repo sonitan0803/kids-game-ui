@@ -63,17 +63,12 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Generate and publish release notes using changesets
-              run: pnpm changeset release --tag v${{ github.ref_name }} --no-changelog
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-            - name: Create GitHub release
-              uses: actions/create-release@v1
-              with:
-                  tag_name: ${{ github.ref }}
-                  release_name: Release ${{ github.ref }}
-                  body: |
-                      $(cat CHANGELOG.md)
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Extract latest changelog entry
+              id: changelog
+              run: |
+                  awk 'BEGIN {found=0} 
+                       /^## / {
+                         if (found) exit; 
+                         else found=1
+                       } 
+                       { if (found) print }' CHANGELOG.md > release-notes.txt
