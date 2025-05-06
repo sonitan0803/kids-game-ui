@@ -26,16 +26,16 @@ jobs:
               run: |
                   corepack enable
                   corepack prepare pnpm@latest --activate
-                  pnpm -v  # ← 念のためバージョン確認（ログ出力用）
+                  pnpm -v
 
             - name: Install dependencies
-              run: pnpm install
+              run: pnpm install --no-frozen-lockfile
 
             - name: Version packages
               run: pnpm changeset version
 
             - name: Re-install to update lockfile
-              run: pnpm install
+              run: pnpm install --no-frozen-lockfile
 
             - name: Publish packages
               run: pnpm changeset publish
