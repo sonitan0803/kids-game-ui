@@ -1,22 +1,39 @@
-import { getReleasePlan } from "@changesets/get-release-plan";
+import getReleasePlan from "@changesets/get-release-plan";
 import fs from "fs";
 import path from "path";
 
 async function generateChangelog() {
     try {
+        // 現在の作業ディレクトリを確認
+        console.log("Current working directory:", process.cwd());
+
         // Get release plan (get all packages' version changes)
-        const plan = await getReleasePlan(".", undefined, { snapshot: false });
+        const plan = await getReleasePlan(".", { snapshot: false });
+
+        // デバッグ: planの内容をログに出力
+        console.log("Release plan:", plan.releases);
+
+        // releases を使用
+        const releases = plan.releases;
+
+        if (!releases || !Array.isArray(releases)) {
+            console.error("Error: 'releases' is not an array or is undefined");
+            process.exit(1);
+        }
 
         // Prepare changelog text
         let changelog = `# Release Notes for ${new Date().toISOString()}\n\n`;
 
-        plan.forEach(({ name, type, changes }) => {
-            changelog += `## ${name} (${type})\n`;
-            changes.forEach((change) => {
-                changelog += `- ${change.summary}\n`;
-            });
-            changelog += "\n";
-        });
+        releases.forEach(
+            ({ name, type, changesets, oldVersion, newVersion }) => {
+                changelog += `## ${name} (${type})\n`;
+                changelog += `- Version change: ${oldVersion} → ${newVersion}\n`;
+                changesets.forEach((change) => {
+                    changelog += `- ${change.summary}\n`;
+                });
+                changelog += "\n";
+            }
+        );
 
         // Write the changelog to a file
         fs.writeFileSync(
