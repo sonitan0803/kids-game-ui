@@ -18,10 +18,10 @@
         "postpack": "clean-package restore"
     },
     "dependencies": {
-        "@kids-game-ui/components-button": "0.1.0",
-        "@kids-game-ui/opening": "^0.2.0",
-        "@kids-game-ui/message": "^0.1.0",
-        "@kids-game-ui/use-character-message": "^0.1.0"
+        "@kids-game-ui/components-button": "workspace:*",
+        "@kids-game-ui/opening": "workspace:*",
+        "@kids-game-ui/message": "workspace:*",
+        "@kids-game-ui/use-character-message": "workspace:*"
     },
     "devDependencies": {
         "clean-package": "2.2.0",
