@@ -5,6 +5,9 @@
     "files": [
         "dist"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "clean-package": "../../../clean-package.config.json",
     "scripts": {
         "build": "tsup src --dts",
