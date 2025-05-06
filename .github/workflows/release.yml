@@ -1,43 +1,42 @@
-name: Release on tag
+name: Release
 
 on:
     push:
         tags:
-            - "v*"
-
-permissions:
-    contents: write
-    id-token: write
+            - "v*" # タグ付きコミットでリリース
 
 jobs:
     release:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout repository
+              uses: actions/checkout@v3
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
               with:
-                  node-version: 18
-                  registry-url: https://registry.npmjs.org/
+                  node-version: "16" # 使用している Node.js バージョンに合わせてください
 
-            - name: Enable and install pnpm via corepack
+            - name: Use latest npm
+              run: npm install -g npm
+
+            - name: Set up pnpm
+              run: npm install -g pnpm
+
+            - name: Set up .npmrc with token
               run: |
-                  corepack enable
-                  corepack prepare pnpm@latest --activate
-                  pnpm -v
+                  echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+                  echo "registry=https://registry.npmjs.org/" >> ~/.npmrc
+
+            - name: Check npm token
+              run: npm whoami # トークンの検証
 
             - name: Install dependencies
-              run: pnpm install --no-frozen-lockfile
+              run: pnpm install
 
-            - name: Version packages
-              run: pnpm changeset version
-
-            - name: Re-install to update lockfile
-              run: pnpm install --no-frozen-lockfile
+            - name: Run changeset publish
+              run: pnpm changeset publish
 
             - name: Publish packages
-              run: pnpm changeset publish
-              env:
-                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+              run: pnpm publish --access public
