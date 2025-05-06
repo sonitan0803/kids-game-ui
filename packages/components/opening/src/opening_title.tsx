@@ -6,7 +6,7 @@ const titleContainer = css`
     height: var(--title-width);
     margin-top: 10%;
     box-sizing: border-box;
-    border: 4mm ridge rgb(252, 255, 171);
+    border: 4mm ridge var(--border-color);
 `;
 
 const titleText = css`
@@ -30,6 +30,7 @@ type OpeningTitleProps = {
     width?: string;
     fontSize?: string;
     fontColor?: string;
+    borderColor?: string;
 };
 
 export const OpeningTitle: React.FC<OpeningTitleProps> = ({
@@ -38,6 +39,7 @@ export const OpeningTitle: React.FC<OpeningTitleProps> = ({
     width = "150px",
     fontColor = "black",
     fontSize = "16px",
+    borderColor = "rgb(252, 255, 171)",
 }) => {
     return (
         <div
@@ -46,6 +48,7 @@ export const OpeningTitle: React.FC<OpeningTitleProps> = ({
                 {
                     "--title-height": height,
                     "--title-width": width,
+                    "--border-color": borderColor,
                 } as React.CSSProperties
             }
         >
