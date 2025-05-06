@@ -75,7 +75,7 @@ jobs:
             - name: Generate release notes
               run: |
                   # 変更履歴を生成してGitHub Releaseに追加
-                  npx changeset release
+                  npx changeset publish
 
             - name: Create GitHub release
               uses: actions/create-release@v1
