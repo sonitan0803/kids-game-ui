@@ -44,7 +44,8 @@ jobs:
               run: pnpm changeset version
               env:
                   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
+            - name: Build packages
+              run: pnpm run build
             - name: Log in to npm
               run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
