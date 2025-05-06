@@ -40,6 +40,8 @@ jobs:
 
             - name: Apply version updates from changesets
               run: pnpm changeset version
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
             - name: Commit version bumps and push changes
               run: |
