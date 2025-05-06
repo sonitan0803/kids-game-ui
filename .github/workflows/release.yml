@@ -63,14 +63,17 @@ jobs:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            - name: Generate release notes
-              run: node scripts/get-changelog.mjs
+            - name: Generate and publish release notes using changesets
+              run: pnpm changeset release --tag v${{ github.ref_name }} --no-changelog
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Create GitHub release
               uses: actions/create-release@v1
               with:
                   tag_name: ${{ github.ref }}
                   release_name: Release ${{ github.ref }}
-                  body_path: release-notes.txt
+                  body: |
+                      $(cat CHANGELOG.md)
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
