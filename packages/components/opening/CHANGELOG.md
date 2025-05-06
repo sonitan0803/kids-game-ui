@@ -1,5 +1,11 @@
 # @kids-game-ui/opening
 
+## 0.3.5
+
+### Patch Changes
+
+- [`8cfb316`](https://github.com/sonitan0803/kids-game-ui/commit/8cfb316324f1b80beca577fa470d8e43fd657544) Thanks [@sonitan0803](https://github.com/sonitan0803)! - パッケージ更新のテスト
+
 ## 0.3.4
 
 ### Patch Changes
