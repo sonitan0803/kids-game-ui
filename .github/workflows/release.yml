@@ -23,8 +23,11 @@ jobs:
                   cache: pnpm
                   registry-url: https://registry.npmjs.org/
 
+            - name: Install pnpm
+              run: npm install -g pnpm
+
             - name: Install dependencies
-              run: corepack enable && pnpm install
+              run: pnpm install
 
             - name: Version packages
               run: pnpm changeset version
