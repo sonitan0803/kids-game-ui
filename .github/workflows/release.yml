@@ -4,6 +4,7 @@ on:
     push:
         tags:
             - "v*"
+
 permissions:
     contents: write
     pull-requests: write
@@ -14,6 +15,8 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0 # タグや履歴を含めて取得するため重要
 
             - name: Set up Node.js (latest)
               uses: actions/setup-node@v3
@@ -44,13 +47,21 @@ jobs:
               run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
             - name: Verify npm authentication
-              run: |
-                  npm whoami
-                  # もし認証に失敗した場合にエラーを出す
-              continue-on-error: false # 認証に失敗したらエラーで終了
+              run: npm whoami
+              continue-on-error: false
 
             - name: Publish packages
               run: pnpm publish --access public --no-git-checks --filter "@kids-game-ui/*"
+
+            - name: Remove changeset files
+              run: |
+                  git rm .changeset/*.md || true
+
+            - name: Commit removal of changeset files
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git commit -m "chore: remove consumed changesets" || echo "No changes to commit"
 
             - name: Push changes
               run: |
@@ -58,13 +69,20 @@ jobs:
                   git config user.email "github-actions[bot]@users.noreply.github.com"
                   git push origin HEAD:main
 
+            - name: Extract latest changelog entry
+              id: changelog
+              run: |
+                  PACKAGE_DIR="packages/react" # 必要に応じて変更
+                  changelog=$(awk '/^## /{i++}i==2{exit}i==1' $PACKAGE_DIR/CHANGELOG.md)
+                  echo "changelog<<EOF" >> $GITHUB_OUTPUT
+                  echo "$changelog" >> $GITHUB_OUTPUT
+                  echo "EOF" >> $GITHUB_OUTPUT
+
             - name: Create GitHub release
               uses: actions/create-release@v1
               with:
                   tag_name: ${{ github.ref }}
                   release_name: Release ${{ github.ref }}
-                  body: |
-                      Changes made in this release:
-                      ${{ steps.changeset.outputs.changeset_list }}
+                  body: ${{ steps.changelog.outputs.changelog }}
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
