@@ -1,0 +1,40 @@
+name: "ドキュメント改善提案"
+description: "ドキュメントの誤り、分かりづらい説明、不足している情報などを報告できます"
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ドキュメントに関する改善提案ありがとうございます ✨  
+        対象箇所や背景をできるだけ詳しく教えてください。
+
+  - type: input
+    id: doc-title
+    attributes:
+      label: "ドキュメントのタイトルまたは対象ページ"
+      description: "改善したいドキュメントのタイトルやURLなど"
+      placeholder: "例: README.md のインストール手順"
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: "問題点"
+      description: "誤記・不足・わかりにくい説明など、具体的に記述してください。"
+      placeholder: |
+        - インストール手順に `pnpm` の説明がない
+        - コンポーネントの使い方がサンプルコードだけでは理解しにくい
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: "提案内容"
+      description: "どのように改善すればよいか、提案があれば記述してください（任意）"
+      placeholder: "インストール例として `pnpm add @kids-game-ui/react` を追記するのがよいかと思います。"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: "その他の情報"
+      description: "参考になりそうなリンクや外部ドキュメント、補足があれば教えてください。"
