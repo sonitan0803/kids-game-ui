@@ -40,7 +40,6 @@ body:
           label: "再現手順"
           description: |
               問題を再現する方法を記述してください
-          value: |
     - type: dropdown
       id: browser-type
       attributes:
