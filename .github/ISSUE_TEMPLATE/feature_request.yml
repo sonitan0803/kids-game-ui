@@ -12,7 +12,7 @@ body:
     attributes:
       label: 機能タイトル
       description: 提案する機能・改善のタイトル（簡潔に）
-      placeholder: 例: ボタンにローディング状態を追加する
+      placeholder: "例: ボタンにローディング状態を追加する"
     validations:
       required: true
 
@@ -43,7 +43,7 @@ body:
     attributes:
       label: 代替案・他の選択肢
       description: 他に検討した方法があれば教えてください（任意）
-      placeholder: 例: トースト通知で完了を知らせる方法もあるが、即時性に欠ける
+      placeholder: "例: トースト通知で完了を知らせる方法もあるが、即時性に欠ける"
 
   - type: textarea
     id: additional
