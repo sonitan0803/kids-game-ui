@@ -64,13 +64,12 @@ body:
               - label: "iPadOS"
               - label: "iOS"
               - label: "Android"
-    - type: dropdown
+    - type: textarea
       id: fix
       attributes:
           label: 問題の解決方法を知っている場合、提供していただけると助かります。
-          options:
-              - "はい"
-              - "いいえ"
+          description: |
+              AのBを修正すると問題が解決できます
     - type: textarea
       id: additional-information
       attributes:
