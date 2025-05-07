@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "../../../packages/components/button"; // 正しいパスに変更
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 type Story = StoryObj<typeof Button>;
 

@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { OpeningTitle } from "../../../packages/components/opening"; // 正しいパスに変更
 import { action } from "@storybook/addon-actions";
+
+import { OpeningTitle } from "../../../packages/components/opening"; // 正しいパスに変更
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 type Story = StoryObj<typeof OpeningTitle>;
 

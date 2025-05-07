@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { CharacterLine } from "../../../../packages/components/message"; // 正しいパスに変更
 import { action } from "@storybook/addon-actions";
+
+import { CharacterLine } from "../../../../packages/components/message"; // 正しいパスに変更
+
+import type { Meta, StoryObj } from "@storybook/react";
 
 type Story = StoryObj<typeof CharacterLine>;
 

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { css } from "@emotion/react";
 
 // 全体のコンテナ（画像＋テキスト）
