@@ -10,8 +10,8 @@ body:
   - type: input
     id: title
     attributes:
-      label: 機能タイトル
-      description: 提案する機能・改善のタイトル（簡潔に）
+      label: "機能タイトル"
+      description: "提案する機能・改善のタイトル（簡潔に）"
       placeholder: "例: ボタンにローディング状態を追加する"
     validations:
       required: true
@@ -19,8 +19,8 @@ body:
   - type: textarea
     id: background
     attributes:
-      label: 背景・目的
-      description: なぜこの機能が必要か、どんな課題があるかを教えてください。
+      label: "背景・目的"
+      description: "なぜこの機能が必要か、どんな課題があるかを教えてください。"
       placeholder: |
         現在のUIではユーザーがボタンを押した後の処理中かどうか分かりません。
         明示的なフィードバックを提供するためにローディング表示が必要です。
@@ -30,8 +30,8 @@ body:
   - type: textarea
     id: proposal
     attributes:
-      label: 提案内容
-      description: 実装方法のアイデアや想定している仕様について記述してください。
+      label: "提案内容"
+      description: "実装方法のアイデアや想定している仕様について記述してください。"
       placeholder: |
         - `<Button>` に `isLoading` props を追加
         - 処理中はスピナーアイコンとともにボタンが無効化される
@@ -41,12 +41,12 @@ body:
   - type: textarea
     id: alternatives
     attributes:
-      label: 代替案・他の選択肢
-      description: 他に検討した方法があれば教えてください（任意）
+      label: "代替案・他の選択肢"
+      description: "他に検討した方法があれば教えてください（任意）"
       placeholder: "例: トースト通知で完了を知らせる方法もあるが、即時性に欠ける"
 
   - type: textarea
     id: additional
     attributes:
-      label: その他の情報
-      description: スクリーンショット、参考リンク、関連Issueなどあれば記載してください。
+      label: "その他の情報"
+      description: "スクリーンショット、参考リンク、関連Issueなどあれば記載してください。"
