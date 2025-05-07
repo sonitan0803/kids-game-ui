@@ -1,0 +1,80 @@
+name: "Bug Report (ja)"
+description: "バグの報告"
+labels: ["bug"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Issueを作成する前に、以下から同様の問題がないか検索してもらえると幸いです。
+
+                - [Issues](https://github.com/sonitan0803/kids-game-ui/issues)
+                - [Closed Issues](https://github.com/sonitan0803/kids-game-ui/issues?q=is%3Aissue%20state%3Aclosed)
+    - type: dropdown
+      id: package
+      attributes:
+          label: 問題の対象パッケージ
+          options:
+              - "@kids-game-ui/react"
+      validations:
+          required: true
+    - type: input
+      id: version
+      attributes:
+          label: "パッケージのバージョン"
+          description: "使用しているパッケージのバージョン。"
+          placeholder: "0.1.0"
+      validations:
+          required: true
+    - type: textarea
+      id: description
+      attributes:
+          label: "概要"
+          description: "問題の簡単な説明。"
+          placeholder: |
+              Aを実行しようとした時に、期待動作はBだが実際にはCの動きをした。
+      validations:
+          required: true
+    - type: textarea
+      id: steps
+      attributes:
+          label: "再現手順"
+          description: |
+              問題を再現する方法を記述してください
+          value: |
+    - type: dropdown
+      id: browser-type
+      attributes:
+          label: ブラウザ
+          description: 問題が再現される対象のブラウザを選択してください。
+          options:
+              - "Chrome"
+              - "Firefox"
+              - "Safari"
+              - "Edge"
+              - "Opera"
+              - "その他（追加のコンテキストを追加）"
+    - type: checkboxes
+      id: operating-system
+      attributes:
+          label: "OS"
+          description: "この問題が発生した対象のOSを選択してください"
+          options:
+              - label: "macOS"
+              - label: "Windows"
+              - label: "Linux"
+              - label: "iPadOS"
+              - label: "iOS"
+              - label: "Android"
+    - type: dropdown
+      id: fix
+      attributes:
+          label: 問題の解決方法を知っている場合、提供していただけると助かります。
+          options:
+              - "はい"
+              - "いいえ"
+    - type: textarea
+      id: additional-information
+      attributes:
+          label: "追加情報"
+          description: |
+              考えられる修正、スクリーンショット、ノート、アイデアへのリンクなど、持っている追加情報を提供いただけると幸いです。
