@@ -1,0 +1,40 @@
+name: "ドキュメント作成リクエスト"
+description: "新しいガイド・チュートリアル・解説記事などの作成リクエストはこちら"
+labels: ["documentation", "request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        新しく作成してほしいドキュメントのリクエストを受け付けています 📝  
+        「この使い方の説明がほしい」「初心者向けガイドがあると助かる」など、お気軽にご提案ください。
+
+  - type: input
+    id: title
+    attributes:
+      label: "提案タイトル"
+      description: "作成してほしいドキュメントの簡潔なタイトル"
+      placeholder: "例: Storybook のセットアップ手順"
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "背景・理由"
+      description: "なぜこのドキュメントが必要か、どんな場面で困ったのかを教えてください。"
+      placeholder: |
+        初めてこのプロジェクトを触る人が、開発環境構築でつまずく可能性があるため。
+
+  - type: textarea
+    id: contents
+    attributes:
+      label: "含めてほしい内容（任意）"
+      description: "具体的に知りたいこと、記載してほしい手順や解説があれば教えてください。"
+      placeholder: |
+        - 必要な前提知識
+        - インストール手順
+        - よくあるエラーとその対処法
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: "参考資料・他プロジェクトの例（任意）"
+      description: "似たようなドキュメントや公式ガイドなどがあれば教えてください。"
