@@ -1,0 +1,46 @@
+name: 機能修正依頼
+description: 既存機能に対するバグではない調整・修正の依頼
+title: "[Fix Request] "
+labels: ["fix", "enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 機能修正依頼テンプレート
+        以下の内容を記入してください。
+
+  - type: input
+    id: related-feature
+    attributes:
+      label: 対象機能
+      description: 修正したい対象のコンポーネントや機能名
+      placeholder: 例）Button コンポーネント
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: 現在の動作
+      description: 現在の振る舞いや仕様について簡潔に記述してください
+      placeholder: 現在の動作の説明…
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 期待する動作
+      description: どうなるべきか、理想の挙動や変更内容を記載してください
+      placeholder: 期待する動作の説明…
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: その他補足事項やスクリーンショットなど
+      placeholder: 任意で記入してください
