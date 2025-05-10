@@ -39,6 +39,15 @@ body:
       required: true
 
   - type: textarea
+    id: suggested-fix
+    attributes:
+      label: 修正案の提案（任意）
+      description: もし具体的な修正案があれば記載してください
+      placeholder: 例）hover 時の背景色を theme.color.primary に変更する、など
+    validations:
+      required: false
+
+  - type: textarea
     id: notes
     attributes:
       label: 備考
