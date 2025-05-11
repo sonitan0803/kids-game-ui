@@ -33,11 +33,11 @@
 コミットメッセージは以下の形式に従ってください。
 
 ```
-<type>(<scope>): <subject>
+<type>(<issue>): <subject>
 ```
 
 - **type**: 変更の種類（必須）
-- **scope**: 影響範囲（任意）
+- **issue**: Issueのチケット番号（必須）
 - **subject**: 簡潔な変更内容（必須）
 
 ### type 一覧
@@ -54,11 +54,11 @@
 
 ### コミット例
 
-- `feat(auth): add login and signup functionality`
-- `fix(button): correct hover state on Safari`
-- `docs(readme): add usage instructions`
-- `refactor(modal): improve open/close handling logic`
-- `chore: update ESLint config and dependencies`
+- `feat(auth): #1 add login and signup functionality`
+- `fix(button): #1 correct hover state on Safari`
+- `docs(readme): #1 add usage instructions`
+- `refactor(modal): #1 improve open/close handling logic`
+- `chore:#1 update ESLint config and dependencies`
 
 ---
 
