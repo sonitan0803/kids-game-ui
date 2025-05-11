@@ -1,5 +1,11 @@
 # @kids-game-ui/components-button
 
+## 0.1.5
+
+### Patch Changes
+
+- [`7611786`](https://github.com/sonitan0803/kids-game-ui/commit/7611786f5ca0f843df2be825f32a6d9c81611b68) Thanks [@sonitan0803](https://github.com/sonitan0803)! - すべてのパッケージ依存を修正
+
 ## 0.1.4
 
 ### Patch Changes
