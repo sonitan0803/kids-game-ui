@@ -1,6 +1,7 @@
-import React from "react";
+import React from "react"
+import type { CSSProperties } from "react"
 
-import { css } from "@emotion/react";
+import { css } from "@emotion/react"
 
 const titleContainer = css`
     width: var(--title-height);
@@ -8,7 +9,7 @@ const titleContainer = css`
     margin-top: 10%;
     box-sizing: border-box;
     border: 4mm ridge var(--border-color);
-`;
+`
 
 const titleText = css`
     font-family: inherit;
@@ -22,22 +23,22 @@ const titleText = css`
     align-items: center;
     justify-content: center;
     color: var(--title-font-color);
-`;
+`
 
 type OpeningTitleProps = {
     /** 表示するタイトル */
-    children: string;
+    children: React.ReactNode
     /** 高さ */
-    height?: string;
+    height?: CSSProperties["height"]
     /** 幅 */
-    width?: string;
+    width?: CSSProperties["width"]
     /** 文字サイズ */
-    fontSize?: string;
+    fontSize?: CSSProperties["fontSize"]
     /** 文字色 */
-    fontColor?: string;
+    fontColor?: CSSProperties["color"]
     /** 枠の色*/
-    borderColor?: string;
-};
+    borderColor?: CSSProperties["color"]
+}
 
 export const OpeningTitle: React.FC<OpeningTitleProps> = ({
     children,
@@ -70,5 +71,5 @@ export const OpeningTitle: React.FC<OpeningTitleProps> = ({
                 {children}
             </p>
         </div>
-    );
-};
+    )
+}

@@ -1,4 +1,5 @@
 import React from "react"
+import type { CSSProperties } from "react"
 
 import { css } from "@emotion/react"
 
@@ -98,7 +99,7 @@ const arrowButton = css`
 
 interface CharacterLineProps {
     /** 表示するメッセージ */
-    children: string
+    children: React.ReactNode
     /** キャラクターの名前 */
     characterName: string
     /** キャラクターの画像 */
@@ -106,17 +107,17 @@ interface CharacterLineProps {
     /** ▼が押されたときの動作 */
     handleMessageClick: () => void
     /** メッセージの縦幅 */
-    height?: string
+    height?: CSSProperties["height"]
     /** メッセージの横幅 */
-    width?: string
+    width?: CSSProperties["width"]
     /** メッセージの表示 */
     isEnd: boolean
     /** キャラクター名のフォントサイズ */
-    characterNameText?: string
+    characterNameText?: CSSProperties["fontSize"]
     /** セリフのフォントサイズ */
-    characterLineText?: string
+    characterLineText?: CSSProperties["fontSize"]
     /**　次のボタンのサイズ */
-    buttonSize?: string
+    buttonSize?: CSSProperties["fontSize"]
 }
 
 export const CharacterLine: React.FC<CharacterLineProps> = ({

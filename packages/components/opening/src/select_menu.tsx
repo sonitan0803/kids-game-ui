@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import type { CSSProperties } from "react"
 
-import { css } from "@emotion/react";
+import { css } from "@emotion/react"
 
 const containerStyle = css`
     display: flex;
@@ -10,7 +11,7 @@ const containerStyle = css`
     background-color: #ffffff;
     width: var(--menu-width);
     height: var(--menu-height);
-`;
+`
 
 const buttonStyle = css`
     width: 100%;
@@ -33,7 +34,7 @@ const buttonStyle = css`
     &:enabled:active {
         background-color: #a1a1a1d5;
     }
-`;
+`
 
 /**
  * SelectMenu コンポーネントは、はじめる／つづきから／オプション の3つの縦並びボタンを表示するメニューです。
@@ -44,24 +45,24 @@ const buttonStyle = css`
  */
 export type SelectMenuProps = {
     /** コンポーネント全体の高さ（例: `"300px"`） */
-    height?: string;
+    height?: CSSProperties["height"]
     /** コンポーネント全体の幅（例: `"200px"`） */
-    width?: string;
+    width?: CSSProperties["width"]
     /** ボタンの背景色 */
-    buttonColor?: string;
+    buttonColor?: CSSProperties["color"]
     /** 文字の色 */
-    fontColor?: string;
+    fontColor?: CSSProperties["color"]
     /** 文字のサイズ */
-    fontSize?: string;
+    fontSize?: CSSProperties["fontSize"]
     /** 「はじめる」ボタンのクリック時に呼ばれるコールバック関数 */
-    handleClickStart: () => void;
+    handleClickStart: () => void
     /** 「つづきから」ボタンのクリック時に呼ばれるコールバック関数 */
-    handleClickContinue: () => void;
+    handleClickContinue: () => void
     /** 「オプション」ボタンのクリック時に呼ばれるコールバック関数 */
-    handleClickOption: () => void;
-};
+    handleClickOption: () => void
+}
 
-type MenuKey = "isStart" | "isContinue" | "isOption";
+type MenuKey = "isStart" | "isContinue" | "isOption"
 
 export const SelectMenu: React.FC<SelectMenuProps> = ({
     height = "150px",
@@ -73,12 +74,12 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
     handleClickContinue,
     handleClickOption,
 }) => {
-    const [selected, setSelected] = useState<MenuKey | null>(null);
+    const [selected, setSelected] = useState<MenuKey | null>(null)
 
     const buttonList: {
-        label: string;
-        key: MenuKey;
-        onClick: () => void;
+        label: string
+        key: MenuKey
+        onClick: () => void
     }[] = [
         { label: "はじめる", key: "isStart", onClick: handleClickStart },
         {
@@ -87,7 +88,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
             onClick: handleClickContinue,
         },
         { label: "オプション", key: "isOption", onClick: handleClickOption },
-    ];
+    ]
 
     return (
         <div
@@ -118,5 +119,5 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
                 </button>
             ))}
         </div>
-    );
-};
+    )
+}
