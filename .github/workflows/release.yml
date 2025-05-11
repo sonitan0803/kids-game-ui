@@ -57,6 +57,9 @@ jobs:
             - name: Log in to npm
               run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
+            - name: Preview packages to be published (dry run)
+              run: pnpm changeset publish --dry-run
+
             - name: Publish packages
               run: pnpm changeset publish
               env:
