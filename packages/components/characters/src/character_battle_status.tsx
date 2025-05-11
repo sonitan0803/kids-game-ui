@@ -7,19 +7,27 @@ import { calculateResponsiveFontSize } from "@kids-game-ui/utils"
 import type { CharacterData } from "./index.types"
 
 // 全体のコンテナ
-const containerStyle = css`
+const containerStyle = (
+    isEnable: boolean,
+    height: string,
+    width: string,
+) => css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: var(--container-height);
-    width: var(--container-width);
+    height: ${height};
+    width: ${width};
     min-width: 100px;
     min-height: 150px;
-    background-color: var(--container-color);
+    background-color: ${isEnable
+        ? "rgba(55, 90, 187, 0.4)"
+        : "rgba(46, 46, 46, 0.515)"};
     font-family: inherit;
     font-weight: bold;
+    box-sizing: content-box;
+    border: solid 2px black;
 `
-// キャラクター画像
+
 const characterImageContainer = css`
     display: flex;
     align-items: center;
@@ -31,15 +39,33 @@ const characterImageContainer = css`
     margin-top: 5%;
 `
 
-// ステータス範囲
+const characterImageStyle = css`
+    width: 75%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+`
+
+const characterNameStyle = (fontSize: number) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    color: white;
+    font-size: ${fontSize}px;
+`
+
 const statusContainer = css`
     height: 50%;
     width: 90%;
     margin-top: 5%;
 `
 
-// HPステータス
-const hpStatusContainer = css`
+const statusRowContainer = css`
     display: flex;
     align-items: center;
     position: relative;
@@ -47,20 +73,43 @@ const hpStatusContainer = css`
     height: 50%;
 `
 
-// MPステータス
-const mpStatusContainer = css`
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 50%;
+const statusLabel = (fontSize: number) => css`
+    font-size: ${fontSize}px;
+    margin-right: 5%;
+    margin-left: 5%;
+    color: white;
 `
 
-// 画像のCSS
-const characterImageStyle = css`
-    width: 75%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
+const statusValue = (fontSize: number) => css`
+    display: flex;
+    flex: 1;
+    height: 50%;
+    align-items: center;
+    position: absolute;
+    right: 10%;
+    color: white;
+    font-size: ${fontSize}px;
+`
+
+const statusBar = (flexValue: number, gradient: string) => css`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: content-box;
+    flex: ${flexValue};
+    height: 50%;
+    background-image: ${gradient};
+`
+
+const emptyBar = (flexValue: number) => css`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: content-box;
+    flex: ${flexValue};
+    height: 50%;
+    background-color: black;
+    margin-right: 5%;
 `
 
 type CharacterBattleProps = {
@@ -80,7 +129,9 @@ export const CharacterBattleStatus: React.FC<CharacterBattleProps> = ({
     characterData,
     isEnable = false,
 }) => {
-    // カテゴリの文字のフォントサイズ
+    const strHeight = typeof height === "number" ? `${height}px` : height
+    const strWidth = typeof width === "number" ? `${width}px` : width
+
     const categoryFontSize = calculateResponsiveFontSize({
         width,
         height,
@@ -90,8 +141,8 @@ export const CharacterBattleStatus: React.FC<CharacterBattleProps> = ({
         minWidth: 100,
         minHeight: 150,
     })
-    // HP,MPの値
-    const ValueFontSize = calculateResponsiveFontSize({
+
+    const valueFontSize = calculateResponsiveFontSize({
         width,
         height,
         baseWidth: 200,
@@ -100,8 +151,8 @@ export const CharacterBattleStatus: React.FC<CharacterBattleProps> = ({
         minWidth: 100,
         minHeight: 150,
     })
-    // キャラクター名
-    const characterNameFontSize = calculateResponsiveFontSize({
+
+    const nameFontSize = calculateResponsiveFontSize({
         width,
         height,
         baseWidth: 200,
@@ -112,146 +163,49 @@ export const CharacterBattleStatus: React.FC<CharacterBattleProps> = ({
     })
 
     return (
-        <div
-            css={containerStyle}
-            style={
-                {
-                    "--container-height": height,
-                    "--container-width": width,
-                    "--container-color": isEnable
-                        ? "rgba(55, 90, 187, 0.4)"
-                        : "rgba(46, 46, 46, 0.515)",
-                } as React.CSSProperties
-            }
-        >
+        <div css={containerStyle(isEnable, strHeight, strWidth)}>
             <div css={characterImageContainer}>
                 <img
                     css={characterImageStyle}
                     src={characterData.characterImage}
                 />
-                <div
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "100%",
-                        height: "20%",
-                        position: "absolute",
-                        top: "100%",
-                        left: "50%",
-                        transform: "translateY(-50%) translateX(-50%)",
-                        color: "white",
-                        fontSize: characterNameFontSize,
-                    }}
-                >
+                <div css={characterNameStyle(nameFontSize)}>
                     {characterData.name}
                 </div>
             </div>
             <div css={statusContainer}>
-                <div css={hpStatusContainer}>
-                    <p
-                        style={{
-                            fontSize: categoryFontSize,
-                            marginRight: "5%",
-                            marginLeft: "5%",
-                            color: "white",
-                        }}
-                    >
-                        HP
-                    </p>
-                    <div
-                        style={{
-                            display: "flex",
-                            flex: "1",
-                            height: "50%",
-                            alignItems: "center",
-                            position: "absolute",
-                            right: "10%",
-                            color: "white",
-                            fontSize: ValueFontSize,
-                        }}
-                    >
+                <div css={statusRowContainer}>
+                    <p css={statusLabel(categoryFontSize)}>HP</p>
+                    <div css={statusValue(valueFontSize)}>
                         {characterData.currentHp}
                     </div>
                     <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                            boxSizing: "content-box",
-                            flex:
-                                characterData.currentHp / characterData.totalHp,
-                            height: "50%",
-                            backgroundImage:
-                                "linear-gradient(90deg, #0f0, #3cba54)",
-                        }}
+                        css={statusBar(
+                            characterData.currentHp / characterData.totalHp,
+                            "linear-gradient(90deg, #0f0, #3cba54)",
+                        )}
                     />
                     <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                            boxSizing: "content-box",
-                            flex:
-                                1 -
-                                characterData.currentHp / characterData.totalHp,
-                            height: "50%",
-                            backgroundColor: "black",
-                            marginRight: "5%",
-                        }}
+                        css={emptyBar(
+                            1 - characterData.currentHp / characterData.totalHp,
+                        )}
                     />
                 </div>
-                <div css={mpStatusContainer}>
-                    <p
-                        style={{
-                            fontSize: categoryFontSize,
-                            marginRight: "5%",
-                            marginLeft: "5%",
-                            color: "white",
-                        }}
-                    >
-                        MP
-                    </p>
-                    <div
-                        style={{
-                            display: "flex",
-                            flex: "1",
-                            height: "50%",
-                            alignItems: "center",
-                            position: "absolute",
-                            right: "10%",
-                            color: "white",
-                            fontSize: ValueFontSize,
-                        }}
-                    >
+                <div css={statusRowContainer}>
+                    <p css={statusLabel(categoryFontSize)}>MP</p>
+                    <div css={statusValue(valueFontSize)}>
                         {characterData.currentMp}
                     </div>
                     <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                            boxSizing: "content-box",
-                            flex:
-                                characterData.currentMp / characterData.totalMp,
-                            height: "50%",
-                            backgroundImage:
-                                "linear-gradient(90deg, #007BFF, #00C6FF)",
-                        }}
+                        css={statusBar(
+                            characterData.currentMp / characterData.totalMp,
+                            "linear-gradient(90deg, #007BFF, #00C6FF)",
+                        )}
                     />
                     <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                            boxSizing: "content-box",
-                            flex:
-                                1 -
-                                characterData.currentMp / characterData.totalMp,
-                            height: "50%",
-                            backgroundColor: "black",
-                            marginRight: "5%",
-                        }}
+                        css={emptyBar(
+                            1 - characterData.currentMp / characterData.totalMp,
+                        )}
                     />
                 </div>
             </div>
