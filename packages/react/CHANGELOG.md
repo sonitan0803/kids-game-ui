@@ -1,5 +1,11 @@
 # @kids-game-ui/react
 
+## 0.2.17
+
+### Patch Changes
+
+- [`beed044`](https://github.com/sonitan0803/kids-game-ui/commit/beed0442fcce4a8b06d2f225a1a468ff9cf69be1) Thanks [@sonitan0803](https://github.com/sonitan0803)! - Add util package
+
 ## 0.2.16
 
 ### Patch Changes
