@@ -22,7 +22,9 @@
         "@kids-game-ui/components-button": "workspace:*",
         "@kids-game-ui/opening": "workspace:*",
         "@kids-game-ui/message": "workspace:*",
-        "@kids-game-ui/use-character-message": "workspace:*"
+        "@kids-game-ui/use-character-message": "workspace:*",
+        "@kids-game-ui/characters": "workspace:*",
+        "@kids-game-ui/utils": "workspace:*"
     },
     "devDependencies": {
         "clean-package": "2.2.0",
