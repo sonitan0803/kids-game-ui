@@ -1,5 +1,11 @@
 # @kids-game-ui/message
 
+## 0.1.7
+
+### Patch Changes
+
+- [`51688d5`](https://github.com/sonitan0803/kids-game-ui/commit/51688d554e2039bab953742bf9d35ac5615cfb22) Thanks [@sonitan0803](https://github.com/sonitan0803)! - キャラクターのステータスUI及び、関連する汎用関数の追加
+
 ## 0.1.6
 
 ### Patch Changes
