@@ -1,5 +1,14 @@
 # @kids-game-ui/characters
 
+## 0.1.2
+
+### Patch Changes
+
+- [`669837d`](https://github.com/sonitan0803/kids-game-ui/commit/669837dab3d5104866543ad8347c0800eec425fd) Thanks [@sonitan0803](https://github.com/sonitan0803)! - パッケージの依存関係を解決
+
+- Updated dependencies [[`669837d`](https://github.com/sonitan0803/kids-game-ui/commit/669837dab3d5104866543ad8347c0800eec425fd)]:
+    - @kids-game-ui/utils@0.0.2
+
 ## 0.1.1
 
 ### Patch Changes

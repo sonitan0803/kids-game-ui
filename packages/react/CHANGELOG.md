@@ -1,5 +1,19 @@
 # @kids-game-ui/react
 
+## 0.2.18
+
+### Patch Changes
+
+- [`669837d`](https://github.com/sonitan0803/kids-game-ui/commit/669837dab3d5104866543ad8347c0800eec425fd) Thanks [@sonitan0803](https://github.com/sonitan0803)! - パッケージの依存関係を解決
+
+- Updated dependencies [[`669837d`](https://github.com/sonitan0803/kids-game-ui/commit/669837dab3d5104866543ad8347c0800eec425fd)]:
+    - @kids-game-ui/components-button@0.1.4
+    - @kids-game-ui/characters@0.1.2
+    - @kids-game-ui/message@0.1.8
+    - @kids-game-ui/opening@0.3.6
+    - @kids-game-ui/use-character-message@0.1.3
+    - @kids-game-ui/utils@0.0.2
+
 ## 0.2.17
 
 ### Patch Changes
