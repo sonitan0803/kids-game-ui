@@ -1,5 +1,13 @@
 # @kids-game-ui/react
 
+## 0.2.16
+
+### Patch Changes
+
+- Updated dependencies [[`77ea7dc`](https://github.com/sonitan0803/kids-game-ui/commit/77ea7dc2845c28e983e3e87f8c025071662fd2cb)]:
+    - @kids-game-ui/utils@0.0.1
+    - @kids-game-ui/characters@0.1.1
+
 ## 0.2.15
 
 ### Patch Changes

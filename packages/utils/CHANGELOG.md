@@ -1,5 +1,11 @@
 # @kids-game-ui/utils
 
+## 0.0.1
+
+### Patch Changes
+
+- [`77ea7dc`](https://github.com/sonitan0803/kids-game-ui/commit/77ea7dc2845c28e983e3e87f8c025071662fd2cb) Thanks [@sonitan0803](https://github.com/sonitan0803)! - CI/CDの更新。エラーで公開できなかったパッケージの公開
+
 ## 0.1.0
 
 ### Minor Changes
