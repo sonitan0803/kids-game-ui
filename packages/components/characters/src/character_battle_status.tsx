@@ -15,7 +15,7 @@ const containerStyle = css`
     width: var(--container-width);
     min-width: 100px;
     min-height: 150px;
-    background-color: rgba(73, 73, 73, 0.4);
+    background-color: var(--container-color);
     font-family: inherit;
     font-weight: bold;
 `
@@ -64,15 +64,21 @@ const characterImageStyle = css`
 `
 
 type CharacterBattleProps = {
+    /** コンテナの高さ */
     height?: CSSProperties["height"]
+    /** コンテナの横幅 */
     width?: CSSProperties["width"]
+    /** キャラクター情報 */
     characterData: CharacterData
+    /** キャラクターが選択対象か */
+    isEnable: boolean
 }
 
 export const CharacterBattleStatus: React.FC<CharacterBattleProps> = ({
     height = "300px",
     width = "200px",
     characterData,
+    isEnable = false,
 }) => {
     // カテゴリの文字のフォントサイズ
     const categoryFontSize = calculateResponsiveFontSize({
@@ -112,6 +118,9 @@ export const CharacterBattleStatus: React.FC<CharacterBattleProps> = ({
                 {
                     "--container-height": height,
                     "--container-width": width,
+                    "--container-color": isEnable
+                        ? "rgba(55, 90, 187, 0.4)"
+                        : "rgba(46, 46, 46, 0.515)",
                 } as React.CSSProperties
             }
         >

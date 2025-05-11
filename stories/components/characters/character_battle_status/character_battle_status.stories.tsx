@@ -25,6 +25,22 @@ export const Default: Story = {
             characterImage:
                 "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
         },
+        isEnable: false,
+    },
+}
+
+export const Enable: Story = {
+    args: {
+        characterData: {
+            name: "かみやま",
+            totalHp: 1000,
+            currentHp: 1000,
+            totalMp: 500,
+            currentMp: 500,
+            characterImage:
+                "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
+        },
+        isEnable: true,
     },
 }
 
@@ -41,6 +57,7 @@ export const MinDefault: Story = {
             characterImage:
                 "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
         },
+        isEnable: false,
     },
 }
 
@@ -57,6 +74,7 @@ export const Big: Story = {
             characterImage:
                 "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
         },
+        isEnable: false,
     },
 }
 
@@ -71,6 +89,7 @@ export const DefaultGainStatus: Story = {
             characterImage:
                 "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
         },
+        isEnable: false,
     },
 }
 
@@ -87,6 +106,7 @@ export const MinGainStatusDefault: Story = {
             characterImage:
                 "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
         },
+        isEnable: false,
     },
 }
 
@@ -103,5 +123,6 @@ export const BigGainStatus: Story = {
             characterImage:
                 "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi94bUmrX7_QbkuO10pft4UVWiRRuF0oKpy1hsBQa0sTYVPyqb4MHLPsSPF9jqElIIUd6GQG2pXIEInAH4NRDxOC_doNl5erI6NaE5U37xMyw3KqcJsBSxTrSAo_4WA1Fs4l4viwmQWK6Qi/s800/computer_school_boy.png",
         },
+        isEnable: false,
     },
 }
