@@ -1,0 +1,36 @@
+{
+    "name": "@kids-game-ui/utils",
+    "version": "0.0.0",
+    "main": "src/index.ts",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "clean-package": "../../../clean-package.config.json",
+    "scripts": {
+        "build": "tsup src --dts",
+        "clean": "rimraf dist .turbo",
+        "prepack": "clean-package",
+        "postpack": "clean-package restore"
+    },
+    "devDependencies": {
+        "react": "^18.3.1"
+    },
+    "peerDependencies": {
+        "react": ">=18"
+    },
+    "tsup": {
+        "clean": true,
+        "target": "es2019",
+        "format": [
+            "cjs",
+            "esm"
+        ],
+        "banner": {
+            "js": "\"use client\""
+        },
+        "sourcemap": true
+    }
+}

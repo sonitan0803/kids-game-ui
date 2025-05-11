@@ -45,7 +45,11 @@
         "**/.turbo/**",
         ".changelog/**",
         ".changeset/**",
-        "storybook-static/**"
+        "templates/**",
+        "storybook-static/**",
+        "eslint.config.mjs",
+        "eslint/eslint.config.import.mjs",
+        "scripts/get-changelog.mjs"
     ],
     "ts-node": {
         "transpileOnly": true,

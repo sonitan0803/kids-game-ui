@@ -1,6 +1,6 @@
-import React from "react";
+import React from "react"
 
-import { css } from "@emotion/react";
+import { css } from "@emotion/react"
 
 // 全体のコンテナ（画像＋テキスト）
 const containerStyle = css`
@@ -12,20 +12,20 @@ const containerStyle = css`
     background-color: rgba(73, 73, 73, 0.4);
     box-sizing: border-box;
     border: 4px ridge rgba(255, 255, 255, 1);
-`;
+`
 
 // 画像側のコンテナ
 const imageWrapper = css`
     display: flex;
     align-items: center;
-`;
+`
 
 // テキスト全体のラッパー（85%の上部＋15%の下部）
 const textWrapper = css`
     display: flex;
     flex-direction: column;
     flex: 1;
-`;
+`
 
 // 名前とセリフ部分（上部）
 const dialogueArea = css`
@@ -37,7 +37,7 @@ const dialogueArea = css`
     color: white;
     overflow-y: auto;
     box-sizing: border-box;
-`;
+`
 
 // キャラクター名のスタイル
 const nameText = css`
@@ -45,7 +45,7 @@ const nameText = css`
     font-size: var(--character-name-font-size);
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 黒い縁 */
-`;
+`
 
 // セリフテキストのスタイル
 const dialogueText = css`
@@ -55,7 +55,7 @@ const dialogueText = css`
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* 黒い縁 */
     line-height: 140%;
-`;
+`
 
 // 下部ボタン（▼）を含むコンテナ
 const footer = css`
@@ -64,7 +64,7 @@ const footer = css`
     width: 100%;
     align-items: center;
     justify-content: center;
-`;
+`
 
 // ▼マークの点滅アニメーション
 const blinkingArrow = css`
@@ -75,7 +75,7 @@ const blinkingArrow = css`
             opacity: 0;
         }
     }
-`;
+`
 
 // キャラクター画像のスタイル
 const characterImageStyle = css`
@@ -86,7 +86,7 @@ const characterImageStyle = css`
     @media (min-width: 768px) {
         height: 90%; /* 高画面サイズで画像を大きく */
     }
-`;
+`
 
 // ▼ボタン自体のスタイル
 const arrowButton = css`
@@ -94,29 +94,29 @@ const arrowButton = css`
     border: 2px solid transparent;
     color: white;
     font-size: var(--button-font-size); /* 基準サイズ */
-`;
+`
 
 interface CharacterLineProps {
     /** 表示するメッセージ */
-    children: string;
+    children: string
     /** キャラクターの名前 */
-    characterName: string;
+    characterName: string
     /** キャラクターの画像 */
-    characterImage?: string;
+    characterImage?: string
     /** ▼が押されたときの動作 */
-    handleMessageClick: () => void;
+    handleMessageClick: () => void
     /** メッセージの縦幅 */
-    height?: string;
+    height?: string
     /** メッセージの横幅 */
-    width?: string;
+    width?: string
     /** メッセージの表示 */
-    isEnd: boolean;
+    isEnd: boolean
     /** キャラクター名のフォントサイズ */
-    characterNameText?: string;
+    characterNameText?: string
     /** セリフのフォントサイズ */
-    characterLineText?: string;
+    characterLineText?: string
     /**　次のボタンのサイズ */
-    buttonSize?: string;
+    buttonSize?: string
 }
 
 export const CharacterLine: React.FC<CharacterLineProps> = ({
@@ -132,7 +132,7 @@ export const CharacterLine: React.FC<CharacterLineProps> = ({
     buttonSize = "16px",
 }) => {
     if (isEnd) {
-        return;
+        return
     }
 
     return (
@@ -198,5 +198,5 @@ export const CharacterLine: React.FC<CharacterLineProps> = ({
                 </button>
             </div>
         </div>
-    );
-};
+    )
+}
