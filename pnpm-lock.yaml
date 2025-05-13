@@ -173,12 +173,12 @@ importers:
       '@emotion/styled':
         specifier: '>=11'
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@18.3.1))(@types/react@19.1.2)(react@18.3.1)
+      '@kids-game-ui/button':
+        specifier: workspace:*
+        version: link:../components/button
       '@kids-game-ui/characters':
         specifier: workspace:*
         version: link:../components/characters
-      '@kids-game-ui/components-button':
-        specifier: workspace:*
-        version: link:../components/button
       '@kids-game-ui/message':
         specifier: workspace:*
         version: link:../components/message
