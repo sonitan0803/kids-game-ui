@@ -11,7 +11,7 @@
 |--------------|------|
 | `main`       | 常に安定している本番用ブランチです。 |
 | `develop`    | 次のリリースに向けた開発の統合ブランチです。 |
-| `feature/*`  | 新機能の開発用ブランチ。`feature/` に続けて機能名を記述します。 |
+| `feat/*`  | 新機能の開発用ブランチ。`feat/` に続けて機能名を記述します。 |
 | `fix/*`      | バグ修正用ブランチ。 |
 | `hotfix/*`   | 本番環境への緊急修正ブランチ。 |
 | `docs/*`     | ドキュメントの変更用ブランチ。 |
@@ -20,7 +20,7 @@
 
 ### ブランチ命名例
 
-- `feature/add-login-page`
+- `feat/add-login-page`
 - `fix/header-overlap-on-mobile`
 - `docs/update-readme`
 - `refactor/button-component`
@@ -44,7 +44,7 @@
 
 | type       | 説明 |
 |------------|------|
-| `feature`     | 新機能の追加 |
+| `feat`     | 新機能の追加 |
 | `fix`      | バグ修正 |
 | `docs`     | ドキュメントの変更 |
 | `refactor` | リファクタリング（機能変更なし） |
@@ -54,7 +54,7 @@
 
 ### コミット例
 
-- `feature(auth): #1 add login and signup functionality`
+- `feat(auth): #1 add login and signup functionality`
 - `fix(button): #1 correct hover state on Safari`
 - `docs(readme): #1 add usage instructions`
 - `refactor(modal): #1 improve open/close handling logic`
