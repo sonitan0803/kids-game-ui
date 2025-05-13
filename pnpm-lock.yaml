@@ -159,6 +159,16 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1
 
+  packages/components/popup:
+    dependencies:
+      '@kids-game-ui/utils':
+        specifier: workspace:*
+        version: link:../../utils
+    devDependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+
   packages/hooks/use_character_message:
     devDependencies:
       react:
@@ -185,6 +195,9 @@ importers:
       '@kids-game-ui/opening':
         specifier: workspace:*
         version: link:../components/opening
+      '@kids-game-ui/popup':
+        specifier: workspace:*
+        version: link:../components/popup
       '@kids-game-ui/use-character-message':
         specifier: workspace:*
         version: link:../hooks/use_character_message

@@ -24,6 +24,7 @@
         "@kids-game-ui/message": "workspace:*",
         "@kids-game-ui/use-character-message": "workspace:*",
         "@kids-game-ui/characters": "workspace:*",
+        "@kids-game-ui/popup": "workspace:*",
         "@kids-game-ui/utils": "workspace:*"
     },
     "devDependencies": {
