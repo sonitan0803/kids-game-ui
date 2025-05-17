@@ -158,6 +158,13 @@ importers:
         version: 18.3.1
 
   packages/components/opening:
+    dependencies:
+      '@kids-game-ui/button':
+        specifier: workspace:*
+        version: link:../button
+      '@kids-game-ui/utils':
+        specifier: workspace:*
+        version: link:../../utils
     devDependencies:
       react:
         specifier: ^18.2.0
@@ -210,10 +217,6 @@ importers:
         version: 18.3.1
 
   packages/utils:
-    dependencies:
-      '@kids-game-ui/button':
-        specifier: workspace:*
-        version: link:../components/button
     devDependencies:
       react:
         specifier: ^18.2.0

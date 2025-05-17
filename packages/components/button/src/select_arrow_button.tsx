@@ -3,7 +3,10 @@ import React from "react"
 import { css } from "@emotion/react"
 import { calculateResponsiveFontSize } from "@kids-game-ui/utils"
 
-import type { SelectArrowButtonProps } from "./index.types"
+import type {
+    SelectArrowButtonProps,
+    SelectArrowButtonListsProps,
+} from "./index.types"
 
 const buttonStyles = css`
     width: var(--button-width);
@@ -35,8 +38,8 @@ const buttonStyles = css`
 
 export const SelectArrowButton: React.FC<SelectArrowButtonProps> = ({
     label,
-    width = "150px",
-    height = "150px",
+    width,
+    height,
     buttonColor = "transparent",
     fontColor = "black",
     fontSize,
@@ -76,5 +79,42 @@ export const SelectArrowButton: React.FC<SelectArrowButtonProps> = ({
         >
             {label}
         </button>
+    )
+}
+
+export const SelectArrowButtonLists: React.FC<SelectArrowButtonListsProps> = ({
+    lists,
+    direction = "column",
+    gap = "0px",
+}) => {
+    return (
+        <div
+            style={{
+                display: "flex",
+                flexDirection: direction,
+                gap: gap,
+                width: "100%",
+                height: "100%",
+            }}
+        >
+            {lists.map((list, index) => {
+                return (
+                    <div key={index} style={{ flex: 1, display: "flex" }}>
+                        <SelectArrowButton
+                            label={list.label}
+                            onClick={list.onClick}
+                            width="100%"
+                            height="100%"
+                            buttonColor={list.buttonColor}
+                            fontColor={list.fontColor}
+                            fontSize={list.fontSize}
+                            border={list.border}
+                            hoverColor={list.hoverColor}
+                            activeColor={list.activeColor}
+                        />
+                    </div>
+                )
+            })}
+        </div>
     )
 }

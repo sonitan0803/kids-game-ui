@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions"
 
-import { SelectArrowButtonLists } from "../../../packages/utils" // 正しいパスに変更
+import { SelectArrowButtonLists } from "../../../packages/components/button" // 正しいパスに変更
 
 import type { Meta, StoryObj } from "@storybook/react"
 
@@ -8,7 +8,7 @@ type Story = StoryObj<typeof SelectArrowButtonLists>
 
 const meta: Meta<typeof SelectArrowButtonLists> = {
     component: SelectArrowButtonLists,
-    title: "Components / Utils / SelectArrowButtonLists",
+    title: "Components / Button/ SelectArrowButtonLists",
 }
 
 export default meta

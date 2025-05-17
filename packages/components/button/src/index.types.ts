@@ -20,3 +20,11 @@ export type SelectArrowButtonProps = {
     /** アクティブ時の背景色 */
     activeColor?: CSSProperties["backgroundColor"]
 }
+
+export interface SelectArrowButtonListsProps {
+    lists: SelectArrowButtonProps[]
+    /** "row" or "column" でボタンの並び方向を指定 */
+    direction?: "row" | "column"
+    /** ボタン同士の間隔（例: "16px"） */
+    gap?: string
+}
