@@ -210,6 +210,10 @@ importers:
         version: 18.3.1
 
   packages/utils:
+    dependencies:
+      '@kids-game-ui/button':
+        specifier: workspace:*
+        version: link:../components/button
     devDependencies:
       react:
         specifier: ^18.2.0

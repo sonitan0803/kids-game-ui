@@ -1,8 +1,9 @@
 import React from "react"
-import type { CSSProperties } from "react"
 
 import { css } from "@emotion/react"
 import { calculateResponsiveFontSize } from "@kids-game-ui/utils"
+
+import type { SelectArrowButtonProps } from "./index.types"
 
 const buttonStyles = css`
     width: var(--button-width);
@@ -31,26 +32,6 @@ const buttonStyles = css`
         margin-left: 8px;
     }
 `
-export type SelectArrowButtonProps = {
-    label: string
-    onClick?: () => void
-    /** コンポーネント全体の高さ（例: `"300px"`） */
-    height?: CSSProperties["height"]
-    /** コンポーネント全体の幅（例: `"200px"`） */
-    width?: CSSProperties["width"]
-    /** ボタンの背景色 */
-    buttonColor?: CSSProperties["color"]
-    /** 文字の色 */
-    fontColor?: CSSProperties["color"]
-    /** 文字のサイズ */
-    fontSize?: CSSProperties["fontSize"]
-    /** ボタンの枠線 */
-    border?: CSSProperties["border"]
-    /** ホバー時の背景色 */
-    hoverColor?: CSSProperties["backgroundColor"]
-    /** アクティブ時の背景色 */
-    activeColor?: CSSProperties["backgroundColor"]
-}
 
 export const SelectArrowButton: React.FC<SelectArrowButtonProps> = ({
     label,
