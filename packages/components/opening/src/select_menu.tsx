@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import type { CSSProperties } from "react"
 
 import { css } from "@emotion/react"
@@ -14,29 +14,6 @@ const containerStyle = css`
     background-color: #ffffff;
     width: var(--menu-width);
     height: var(--menu-height);
-`
-
-const buttonStyle = css`
-    width: 100%;
-    flex: 1;
-    background: var(--button-color);
-    color: var(--font-color);
-    font-family: inherit;
-    font-size: var(--font-size);
-    border: 2px solid transparent;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-
-    &:enabled:hover {
-        background-color: #d5d5d5d5;
-        transform: translateY(-4px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    &:enabled:active {
-        background-color: #a1a1a1d5;
-    }
 `
 
 /**
@@ -65,8 +42,6 @@ export type SelectMenuProps = {
     handleClickOption: () => void
 }
 
-type MenuKey = "isStart" | "isContinue" | "isOption"
-
 export const SelectMenu: React.FC<SelectMenuProps> = ({
     height = "150px",
     width = "150px",
@@ -77,22 +52,6 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
     handleClickContinue,
     handleClickOption,
 }) => {
-    const [selected, setSelected] = useState<MenuKey | null>(null)
-
-    // const buttonList: {
-    //     label: string
-    //     key: MenuKey
-    //     onClick: () => void
-    // }[] = [
-    //     { label: "はじめる", key: "isStart", onClick: handleClickStart },
-    //     {
-    //         label: "つづきから",
-    //         key: "isContinue",
-    //         onClick: handleClickContinue,
-    //     },
-    //     { label: "オプション", key: "isOption", onClick: handleClickOption },
-    // ]
-
     const buttonList: SelectArrowButtonProps[] = [
         {
             label: "はじめる",
