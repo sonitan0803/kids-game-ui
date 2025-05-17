@@ -1,18 +1,18 @@
-import { Button } from "../../../packages/components/button"; // 正しいパスに変更
+import { Button } from "../../../packages/components/button" // 正しいパスに変更
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react"
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof Button>
 
 const meta: Meta<typeof Button> = {
     component: Button,
-    title: "Components / Data Display / Badge",
-};
+    title: "Components / Button/ Badge",
+}
 
-export default meta;
+export default meta
 
 export const Default: Story = {
     args: {
         label: "Click Me",
     },
-};
+}
