@@ -1,6 +1,6 @@
 {
-    "name": "@kids-game-ui/components-button",
-    "version": "0.1.5",
+    "name": "@kids-game-ui/button",
+    "version": "0.0.0",
     "main": "src/index.ts",
     "files": [
         "dist"
@@ -14,6 +14,9 @@
         "clean": "rimraf dist .turbo",
         "prepack": "clean-package",
         "postpack": "clean-package restore"
+    },
+    "dependencies": {
+        "@kids-game-ui/utils": "workspace:*"
     },
     "devDependencies": {
         "react": "^18.3.1"

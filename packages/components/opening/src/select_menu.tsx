@@ -2,6 +2,9 @@ import React, { useState } from "react"
 import type { CSSProperties } from "react"
 
 import { css } from "@emotion/react"
+import { SelectArrowButtonLists } from "@kids-game-ui/button"
+
+import type { SelectArrowButtonProps } from "@kids-game-ui/button"
 
 const containerStyle = css`
     display: flex;
@@ -76,18 +79,45 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
 }) => {
     const [selected, setSelected] = useState<MenuKey | null>(null)
 
-    const buttonList: {
-        label: string
-        key: MenuKey
-        onClick: () => void
-    }[] = [
-        { label: "はじめる", key: "isStart", onClick: handleClickStart },
+    // const buttonList: {
+    //     label: string
+    //     key: MenuKey
+    //     onClick: () => void
+    // }[] = [
+    //     { label: "はじめる", key: "isStart", onClick: handleClickStart },
+    //     {
+    //         label: "つづきから",
+    //         key: "isContinue",
+    //         onClick: handleClickContinue,
+    //     },
+    //     { label: "オプション", key: "isOption", onClick: handleClickOption },
+    // ]
+
+    const buttonList: SelectArrowButtonProps[] = [
+        {
+            label: "はじめる",
+            width: "100%",
+            onClick: handleClickStart,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: fontSize,
+        },
         {
             label: "つづきから",
-            key: "isContinue",
+            width: "100%",
             onClick: handleClickContinue,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: fontSize,
         },
-        { label: "オプション", key: "isOption", onClick: handleClickOption },
+        {
+            label: "オプション",
+            width: "100%",
+            onClick: handleClickOption,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: fontSize,
+        },
     ]
 
     return (
@@ -100,24 +130,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
                 } as React.CSSProperties
             }
         >
-            {buttonList.map(({ label, key, onClick }) => (
-                <button
-                    key={key}
-                    css={buttonStyle}
-                    style={
-                        {
-                            "--button-color": buttonColor,
-                            "--font-color": fontColor,
-                            "--font-size": fontSize,
-                        } as React.CSSProperties
-                    }
-                    onClick={onClick}
-                    onMouseEnter={() => setSelected(key)}
-                    onMouseLeave={() => setSelected(null)}
-                >
-                    {label} {selected === key && "←"}
-                </button>
-            ))}
+            <SelectArrowButtonLists lists={buttonList} direction="column" />
         </div>
     )
 }

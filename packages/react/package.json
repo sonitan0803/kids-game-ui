@@ -19,7 +19,7 @@
         "postpack": "clean-package restore"
     },
     "dependencies": {
-        "@kids-game-ui/components-button": "workspace:*",
+        "@kids-game-ui/button": "workspace:*",
         "@kids-game-ui/opening": "workspace:*",
         "@kids-game-ui/message": "workspace:*",
         "@kids-game-ui/use-character-message": "workspace:*",
