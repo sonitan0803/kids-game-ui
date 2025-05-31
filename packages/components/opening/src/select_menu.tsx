@@ -1,7 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import type { CSSProperties } from "react"
 
 import { css } from "@emotion/react"
+import { SelectArrowButtonLists } from "@kids-game-ui/button"
+
+import type { SelectArrowButtonProps } from "@kids-game-ui/button"
 
 const containerStyle = css`
     display: flex;
@@ -11,29 +14,6 @@ const containerStyle = css`
     background-color: #ffffff;
     width: var(--menu-width);
     height: var(--menu-height);
-`
-
-const buttonStyle = css`
-    width: 100%;
-    flex: 1;
-    background: var(--button-color);
-    color: var(--font-color);
-    font-family: inherit;
-    font-size: var(--font-size);
-    border: 2px solid transparent;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-
-    &:enabled:hover {
-        background-color: #d5d5d5d5;
-        transform: translateY(-4px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    &:enabled:active {
-        background-color: #a1a1a1d5;
-    }
 `
 
 /**
@@ -62,8 +42,6 @@ export type SelectMenuProps = {
     handleClickOption: () => void
 }
 
-type MenuKey = "isStart" | "isContinue" | "isOption"
-
 export const SelectMenu: React.FC<SelectMenuProps> = ({
     height = "150px",
     width = "150px",
@@ -74,20 +52,31 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
     handleClickContinue,
     handleClickOption,
 }) => {
-    const [selected, setSelected] = useState<MenuKey | null>(null)
-
-    const buttonList: {
-        label: string
-        key: MenuKey
-        onClick: () => void
-    }[] = [
-        { label: "はじめる", key: "isStart", onClick: handleClickStart },
+    const buttonList: SelectArrowButtonProps[] = [
+        {
+            label: "はじめる",
+            width: "100%",
+            onClick: handleClickStart,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: fontSize,
+        },
         {
             label: "つづきから",
-            key: "isContinue",
+            width: "100%",
             onClick: handleClickContinue,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: fontSize,
         },
-        { label: "オプション", key: "isOption", onClick: handleClickOption },
+        {
+            label: "オプション",
+            width: "100%",
+            onClick: handleClickOption,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: fontSize,
+        },
     ]
 
     return (
@@ -100,24 +89,7 @@ export const SelectMenu: React.FC<SelectMenuProps> = ({
                 } as React.CSSProperties
             }
         >
-            {buttonList.map(({ label, key, onClick }) => (
-                <button
-                    key={key}
-                    css={buttonStyle}
-                    style={
-                        {
-                            "--button-color": buttonColor,
-                            "--font-color": fontColor,
-                            "--font-size": fontSize,
-                        } as React.CSSProperties
-                    }
-                    onClick={onClick}
-                    onMouseEnter={() => setSelected(key)}
-                    onMouseLeave={() => setSelected(null)}
-                >
-                    {label} {selected === key && "←"}
-                </button>
-            ))}
+            <SelectArrowButtonLists lists={buttonList} direction="column" />
         </div>
     )
 }

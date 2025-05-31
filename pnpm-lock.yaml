@@ -132,6 +132,10 @@ importers:
         version: 3.1.2(@types/node@22.14.1)(jsdom@26.1.0)
 
   packages/components/button:
+    dependencies:
+      '@kids-game-ui/utils':
+        specifier: workspace:*
+        version: link:../../utils
     devDependencies:
       react:
         specifier: ^18.2.0
@@ -154,6 +158,13 @@ importers:
         version: 18.3.1
 
   packages/components/opening:
+    dependencies:
+      '@kids-game-ui/button':
+        specifier: workspace:*
+        version: link:../button
+      '@kids-game-ui/utils':
+        specifier: workspace:*
+        version: link:../../utils
     devDependencies:
       react:
         specifier: ^18.2.0
@@ -183,12 +194,12 @@ importers:
       '@emotion/styled':
         specifier: '>=11'
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.1.2)(react@18.3.1))(@types/react@19.1.2)(react@18.3.1)
+      '@kids-game-ui/button':
+        specifier: workspace:*
+        version: link:../components/button
       '@kids-game-ui/characters':
         specifier: workspace:*
         version: link:../components/characters
-      '@kids-game-ui/components-button':
-        specifier: workspace:*
-        version: link:../components/button
       '@kids-game-ui/message':
         specifier: workspace:*
         version: link:../components/message

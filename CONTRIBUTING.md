@@ -7,6 +7,10 @@
 
 ## ブランチ戦略
 
+ブランチは以下規則で作成すること
+
+<ブランチ種別>/Issue番号
+
 | ブランチ種別 | 用途 |
 |--------------|------|
 | `main`       | 常に安定している本番用ブランチです。 |
@@ -20,11 +24,11 @@
 
 ### ブランチ命名例
 
-- `feat/add-login-page`
-- `fix/header-overlap-on-mobile`
-- `docs/update-readme`
-- `refactor/button-component`
-- `chore/update-dependencies`
+- `feat/#1`
+- `fix/#2`
+- `docs/#3`
+- `refactor/#4`
+- `chore/#5`
 
 ---
 
@@ -54,11 +58,11 @@
 
 ### コミット例
 
-- `feat(auth): #1 add login and signup functionality`
-- `fix(button): #1 correct hover state on Safari`
-- `docs(readme): #1 add usage instructions`
-- `refactor(modal): #1 improve open/close handling logic`
-- `chore:#1 update ESLint config and dependencies`
+- `feat(#1): add login and signup functionality`
+- `fix(#2): correct hover state on Safari`
+- `docs(#3): add usage instructions`
+- `refactor(#4): improve open/close handling logic`
+- `chore(#5):ESLint config and dependencies`
 
 ---
 
