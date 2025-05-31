@@ -16,7 +16,8 @@
         "postpack": "clean-package restore"
     },
     "dependencies": {
-        "@kids-game-ui/utils": "workspace:*"
+        "@kids-game-ui/utils": "workspace:*",
+        "@kids-game-ui/button": "workspace:*"
     },
     "devDependencies": {
         "react": "^18.3.1"

@@ -172,6 +172,9 @@ importers:
 
   packages/components/popup:
     dependencies:
+      '@kids-game-ui/button':
+        specifier: workspace:*
+        version: link:../button
       '@kids-game-ui/utils':
         specifier: workspace:*
         version: link:../../utils

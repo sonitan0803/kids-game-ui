@@ -1,8 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import type { CSSProperties } from "react"
 
 import { css } from "@emotion/react"
+import { SelectArrowButtonLists } from "@kids-game-ui/button"
 import { calculateResponsiveFontSize } from "@kids-game-ui/utils"
+
+import type { SelectArrowButtonProps } from "@kids-game-ui/button"
 
 // 全体のコンテナ
 const containerStyle = (
@@ -23,28 +26,6 @@ const containerStyle = (
     `
 }
 
-// ボタンのスタイル
-const selectButtonStyle = (buttonFontSize: CSSProperties["fontSize"]) => {
-    return css`
-        width: 100%;
-        height: 40%;
-        border: 2px solid transparent;
-        background: transparent;
-        font-size: ${buttonFontSize}px;
-        font-family: inherit;
-
-        &:enabled:hover {
-            transform: translateY(-4px);
-            font-weight: bold;
-        }
-
-        &:enabled:active {
-            font-weight: bold;
-            color: #a1a1a1d5;
-        }
-    `
-}
-
 export type YesNoPopupProps = {
     /** コンテナの高さ */
     height?: CSSProperties["height"]
@@ -52,13 +33,15 @@ export type YesNoPopupProps = {
     width?: CSSProperties["width"]
     /** 枠の色*/
     border?: CSSProperties["border"]
+    /** ボタンの背景色 */
+    buttonColor?: CSSProperties["color"]
+    /** 文字の色 */
+    fontColor?: CSSProperties["color"]
     /** はいが選択された時のハンドラ */
     handleClickYes: () => void
     /** いいえが選択された時のハンドラ */
     handleClickNo: () => void
 }
-
-type MenuKey = "isYes" | "isNo"
 
 export const YesNoPopup: React.FC<YesNoPopupProps> = ({
     height = "100px",
@@ -66,22 +49,9 @@ export const YesNoPopup: React.FC<YesNoPopupProps> = ({
     border = "2mm ridge rgb(255, 255, 255)",
     handleClickYes,
     handleClickNo,
+    buttonColor = "transparent",
+    fontColor = "black",
 }) => {
-    const [selected, setSelected] = useState<MenuKey | null>(null)
-
-    const buttonList: {
-        label: string
-        key: MenuKey
-        onClick: () => void
-    }[] = [
-        { label: "はい", key: "isYes", onClick: handleClickYes },
-        {
-            label: "いいえ",
-            key: "isNo",
-            onClick: handleClickNo,
-        },
-    ]
-
     const buttonFontSize = calculateResponsiveFontSize({
         width,
         height,
@@ -92,19 +62,28 @@ export const YesNoPopup: React.FC<YesNoPopupProps> = ({
         minHeight: 50,
     })
 
+    const buttonList: SelectArrowButtonProps[] = [
+        {
+            label: "はい",
+            width: "100%",
+            onClick: handleClickYes,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: buttonFontSize + "px",
+        },
+        {
+            label: "いいえ",
+            width: "100%",
+            onClick: handleClickNo,
+            buttonColor: buttonColor,
+            fontColor: fontColor,
+            fontSize: buttonFontSize + "px",
+        },
+    ]
+
     return (
         <div css={containerStyle(height, width, border)}>
-            {buttonList.map(({ label, key, onClick }) => (
-                <button
-                    key={key}
-                    css={selectButtonStyle(buttonFontSize)}
-                    onClick={onClick}
-                    onMouseEnter={() => setSelected(key)}
-                    onMouseLeave={() => setSelected(null)}
-                >
-                    {label} {selected === key && "←"}
-                </button>
-            ))}
+            <SelectArrowButtonLists lists={buttonList} direction="column" />
         </div>
     )
 }
