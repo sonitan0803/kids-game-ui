@@ -74,6 +74,13 @@ jobs:
             - name: Push changes to main
               run: git push origin HEAD:main
 
+            - name: Merge main into develop and push
+              run: |
+                  git fetch origin
+                  git checkout develop
+                  git merge main
+                  git push origin HEAD:develop
+
             - name: Extract latest changelog entry
               id: changelog
               run: |
