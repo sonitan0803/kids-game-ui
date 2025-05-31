@@ -20,6 +20,7 @@ const containerStyle = (
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        font-family: inherit;
         height: ${height};
         width: ${width};
         border: ${border};
