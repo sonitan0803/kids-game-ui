@@ -1,5 +1,13 @@
 # @kids-game-ui/message
 
+## 0.1.10
+
+### Patch Changes
+
+- [`32e52c1`](https://github.com/sonitan0803/kids-game-ui/commit/32e52c13421de6e1a7676fcf3406f0772d002a84) Thanks [@sonitan0803](https://github.com/sonitan0803)! - PopUp追加
+
+- [`38a91ad`](https://github.com/sonitan0803/kids-game-ui/commit/38a91addffc0bc5aec6efb40c057ec9b48b8bbec) Thanks [@sonitan0803](https://github.com/sonitan0803)! - PropsのCSS項目の方を修正
+
 ## 0.1.9
 
 ### Patch Changes
